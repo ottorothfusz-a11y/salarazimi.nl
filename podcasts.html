@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="hdr" id="hdr">
-  <a class="logo" href="index.html"><img src="images/logo-header.webp" alt="Salar Azimi"></a>
+  <a class="logo" href="index.html"><img src="logo-header.webp" alt="Salar Azimi"></a>
   <nav class="nav">
     <a href="index.html">Home</a>
     <div class="dd"><a href="events.html">Oplossingen<span class="chev">⌄</span></a>
@@ -47,7 +47,7 @@
 
 <div class="px">
 <section class="px-hero" id="px-hero">
-  <img class="px-hero-bg" id="px-hero-bg" src="images/pod-lotgenoten-key.jpg" alt="Salar Azimi in de Lotgenoten podcast">
+  <img class="px-hero-bg" id="px-hero-bg" src="pod-lotgenoten-key.jpg" alt="Salar Azimi in de Lotgenoten podcast">
   <div class="px-hero-in">
     <span class="px-badge"><i>№1</i> Uitgelicht</span>
     <span class="px-show" id="px-hero-show">Lotgenoten podcast</span>
@@ -77,10 +77,10 @@
   <section class="px-row" id="artikelen" aria-labelledby="r4">
     <h2 id="r4">In de pers</h2>
     <div class="px-track" data-row="press">
-      <a class="px-card" href="https://www.pureluxe.nl/2026/03/salar-azimi-privechauffeur/" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="images/art-rolls.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Pure Luxe · artikel</span><span class="px-card-title">Salar Azimi zoekt privéchauffeur die hém betaalt</span></span></a>
-      <a class="px-card" href="https://dexternet.nl/salar-azimi-huis-kasteel-de-elderschans/" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="images/art-kasteel.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Dexternet · artikel</span><span class="px-card-title">Binnenkijken in Salar Azimi huis Kasteel De Elderschans</span></span></a>
-      <a class="px-card" href="https://www.trouw.nl/nieuws/van-asielzoekers-tot-miljonairs-nederland-is-het-beloofde-land~b67e7a87/" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="images/sas-trouw.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Trouw · artikel</span><span class="px-card-title">Van asielzoekers tot miljonairs: ‘Nederland is het beloofde land’</span></span></a>
-      <a class="px-card" href="https://netwerkscenario.nl/salar-azimi-vermogen" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="images/art-geld.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Netwerk scenario · artikel</span><span class="px-card-title">Van Asielzoeker tot Miljonair</span></span></a>
+      <a class="px-card" href="https://www.pureluxe.nl/2026/03/salar-azimi-privechauffeur/" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="art-rolls.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Pure Luxe · artikel</span><span class="px-card-title">Salar Azimi zoekt privéchauffeur die hém betaalt</span></span></a>
+      <a class="px-card" href="https://dexternet.nl/salar-azimi-huis-kasteel-de-elderschans/" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="art-kasteel.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Dexternet · artikel</span><span class="px-card-title">Binnenkijken in Salar Azimi huis Kasteel De Elderschans</span></span></a>
+      <a class="px-card" href="https://www.trouw.nl/nieuws/van-asielzoekers-tot-miljonairs-nederland-is-het-beloofde-land~b67e7a87/" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="sas-trouw.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Trouw · artikel</span><span class="px-card-title">Van asielzoekers tot miljonairs: ‘Nederland is het beloofde land’</span></span></a>
+      <a class="px-card" href="https://netwerkscenario.nl/salar-azimi-vermogen" target="_blank" rel="noopener noreferrer"><span class="px-thumb"><img src="art-geld.jpg" alt="" loading="lazy"><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Netwerk scenario · artikel</span><span class="px-card-title">Van Asielzoeker tot Miljonair</span></span></a>
       <a class="px-card" href="https://thinkrich.nl/vermogen-salar-azimi/" target="_blank" rel="noopener noreferrer"><span class="px-thumb px-thumb-empty"><span>Thinkrich.nl</span><span class="px-thumb-play px-ext" aria-hidden="true">↗</span></span><span class="px-card-txt"><span class="px-card-show">Thinkrich.nl · artikel</span><span class="px-card-title">Het vermogen van Salar Azimi [2026 update]</span></span></a>
     </div>
   </section>
@@ -221,7 +221,7 @@
   function card(id,rank){
     var e=EP[id],b=document.createElement('button');b.type='button';b.className='px-card'+(rank?' ranked':'');b.dataset.ep=id;
     b.innerHTML=(rank?'<span class="px-rank">'+rank+'</span>':'')+
-      '<span class="px-thumb"><img src="images/'+e.img+'" alt="" loading="lazy"><span class="px-thumb-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span></span>'+
+      '<span class="px-thumb"><img src="'+e.img+'" alt="" loading="lazy"><span class="px-thumb-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span></span>'+
       '<span class="px-card-txt"><span class="px-card-show">'+e.show+'</span><span class="px-card-title">'+e.title+'</span></span>';
     b.setAttribute('aria-label',e.show+': '+e.title);return b;
   }
@@ -238,7 +238,7 @@
   var M=document.getElementById('px-ep'),last=null;
   function meta(e){return [e.date||e.year,e.kind,e.tags].filter(Boolean).map(function(x){return '<span>'+x+'</span>'}).join('')}
   function openEp(id,from){var e=EP[id];if(!e)return;last=from||null;
-    document.getElementById('px-ep-img').src='images/'+e.img;document.getElementById('px-ep-show').textContent=e.show;
+    document.getElementById('px-ep-img').src=''+e.img;document.getElementById('px-ep-show').textContent=e.show;
     document.getElementById('px-ep-title').textContent=e.title;document.getElementById('px-ep-play').href=e.url;
     document.getElementById('px-ep-meta').innerHTML=meta(e);document.getElementById('px-ep-desc').textContent=e.desc;
     document.getElementById('px-ep-learn').innerHTML=e.learn.map(function(l){return '<li>'+l+'</li>'}).join('');
@@ -259,7 +259,7 @@
 <footer class="ftr">
   <div class="top">
     <div class="brand">
-      <img src="images/logo-header.webp" alt="Salar Azimi">
+      <img src="logo-header.webp" alt="Salar Azimi">
       <h3>Business.<br>Vastgoed.<br>Netwerk.</h3>
       <p>Ondernemerschap, ervaringen en toegang tot een netwerk waar echte gesprekken ontstaan.</p>
     </div>
@@ -289,7 +289,7 @@
 <div class="incpop" id="incpop" hidden>
   <div class="incpop-box" role="dialog" aria-modal="true" aria-labelledby="incpop-t">
     <button class="incpop-x" type="button" aria-label="Sluiten">×</button>
-    <div class="incpop-img"><img src="images/inc-marrakech.jpg" alt="Resort in Marrakech" loading="lazy"><span class="incpop-tag"><i></i>Aankomende incentive</span></div>
+    <div class="incpop-img"><img src="inc-marrakech.jpg" alt="Resort in Marrakech" loading="lazy"><span class="incpop-tag"><i></i>Aankomende incentive</span></div>
     <div class="incpop-body">
       <span class="incpop-date">12 – 16 november 2026 · Marrakech</span>
       <h2 id="incpop-t">Vijf dagen Marrakech met Salar.</h2>
