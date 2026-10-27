@@ -2361,3 +2361,5 @@ a.pf-card:hover,.pf-card:hover{transform:translateY(-.4rem);border-color:rgba(22
   .ow-head .tabs{display:flex;overflow-x:auto;gap:18px;scrollbar-width:none;max-width:100%}
 }
 @media(max-width:699px){.cards,.ow{scroll-padding-inline:24px}}
+
+.pf-media.logo{background:var(--lg,#fff)}.pf-media.logo:after{display:none}.pf-media.logo img{object-fit:contain;filter:none;transform:scale(.82)}
