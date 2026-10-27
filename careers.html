@@ -47,7 +47,7 @@
 </div>
 
 <section class="hero page-hero cr-hero">
-  <img class="poster" src="careers-hero.jpg" alt="Careers bij Salar Azimi">
+  <img class="poster" src="incentives.jpg" alt="Salar Azimi aan tafel met zijn team" style="object-position:center 30%">
   <div class="in">
     <span class="lbl">Careers</span>
     <h1>Careers</h1>
@@ -158,6 +158,12 @@
     });
   });
 
+
+  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
+  window.AZ_MAIL='info@salar-azimi.nl';
+  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
+    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?l.textContent.replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
+    return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
   // Formulieren in pop-ups (boek, masterclass)
   function openM(m){m.hidden=false;document.body.style.overflow='hidden';var i=m.querySelector('input');if(i)setTimeout(function(){i.focus()},50)}
   function closeM(m){m.hidden=true;document.body.style.overflow=''}
@@ -171,6 +177,7 @@
         var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));
         i.classList.toggle('bad',bad);if(bad)ok=false;});
       f.querySelector('.f-err').hidden=ok;if(!ok)return;
+      var ht=m.querySelector('h2');window.azSend(f,ht?ht.textContent:'');
       m.querySelector('.bm-form').hidden=true;m.querySelector('.bm-done').hidden=false;
     });
   });
