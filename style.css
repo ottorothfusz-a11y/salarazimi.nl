@@ -2528,3 +2528,34 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 .ct-chip input:focus-visible+span{box-shadow:0 0 0 3px rgba(184,149,74,.35)}
 .ct-chips-val{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .ct-chips-row:has(.ct-chips-val.bad) .ct-chip span{border-color:#c4473a}
+/* nog compacter */
+.modal .modal-box{max-width:560px;padding:30px 30px 26px}
+.modal .modal-x{top:12px;right:12px;width:34px;height:34px;font-size:14px}
+.modal .modal-box .lbl{font-size:10px}
+.modal .modal-box h2{font-size:26px;margin-top:6px}
+.modal .bm-product{margin-top:14px;padding:10px 14px}
+.modal .bm-product span{font-size:13px}.modal .bm-product b{font-size:16px}
+.modal .m-form{margin-top:16px}
+.modal .m-form,.modal .nw-step{column-gap:12px;row-gap:10px}
+.modal .f-row{gap:4px}
+.modal .f-row label{font-size:12px}
+.modal .f-row input,.modal .f-row select{height:40px;font-size:14px;border-radius:8px;padding:0 12px}
+.modal .f-row select{padding-right:32px}
+.modal .f-row textarea{min-height:60px;font-size:14px;border-radius:8px;padding:8px 12px}
+.modal .ct-chips{gap:6px}
+.modal .ct-chip span{padding:7px 11px;font-size:12px}
+.modal .btn-dark.wide,.modal .nw-btns .btn-dark{height:44px;line-height:44px;font-size:12px;border-radius:8px}
+.modal .nw-backbtn{height:44px;border-radius:8px}
+.modal .f-err{font-size:12px}
+@media(max-width:768px){.modal .modal-box{padding:42px 16px 18px}.modal .modal-box h2{font-size:23px}.modal .f-row input,.modal .f-row select{height:44px;font-size:16px}.modal .f-row textarea{font-size:16px}}
+/* compactere teamkaarten en contactkaart */
+.oo-cards{gap:1.4rem}
+.oo-card-in{padding:1.8rem 1.6rem 1.8rem}
+.oo-cards h3{font-size:1.9rem;margin-top:.8rem}
+.oo-cards .oo-card-in p{font-size:.92rem;line-height:1.65;margin-top:.8rem}
+.oo-cards .oo-btns{margin-top:1.3rem}
+.ct-wa{grid-template-columns:32% 1fr}
+.ct-wa>div{padding:1.8rem 1.8rem}
+.ct-wa h2{font-size:1.6rem!important}
+.ct-wa p{font-size:.92rem}
+@media(max-width:768px){.oo-card-in{padding:22px 20px}.oo-cards h3{font-size:26px}.ct-wa>div{padding:20px}}
