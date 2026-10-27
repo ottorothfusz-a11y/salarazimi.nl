@@ -47,9 +47,8 @@
 </div>
 
 <section class="hero">
-  <video autoplay muted loop playsinline poster="business-coaching.jpg">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
+  <video id="hero-v" autoplay muted loop playsinline preload="auto" poster="hero-desktop.jpg" data-desk="hero-desktop.mp4" data-mob="hero-mobiel.mp4" data-desk-poster="hero-desktop.jpg" data-mob-poster="hero-mobiel.jpg"></video>
+  <script>(function(){var v=document.getElementById('hero-v'),m=matchMedia('(max-width:768px)'),cur;function set(){var k=m.matches?'mob':'desk';if(k===cur)return;cur=k;v.poster=v.dataset[k+'Poster'];v.src=v.dataset[k];v.play&&v.play().catch(function(){})}set();m.addEventListener&&m.addEventListener('change',set)})();</script>
   <div class="in">
     <h1>Wil jij jouw<br><b>bedrijf schalen?</b></h1>
     <p class="sub">Leer het van iemand die vanuit de bodem naar de top is geklommen.<br>Van azc naar <strong>€50.000.000+</strong><br>niet door geluk, maar door kansen te creëren!</p>
@@ -72,12 +71,12 @@
       <div class="txt"><span class="lbl">Netwerk · Events</span><h3>Azimi Network Events</h3><p>Ontmoet ondernemers, deel ervaringen en bouw relaties die verder gaan dan een visitekaartje.</p><span class="more">Meer informatie</span></div>
     </a>
     <a class="card" href="azimi-inc.html">
-      <img src="incentives.jpg" alt="Azimi Incentives">
+      <img src="ev-dubai.jpg" alt="Azimi Incentives">
       <span class="num">02</span>
       <div class="txt"><span class="lbl">Business · Buitenland</span><h3>Incentives</h3><p>Stap uit je vaste omgeving en combineer business, netwerk en nieuwe perspectieven in het buitenland.</p><span class="more">Meer informatie</span></div>
     </a>
     <a class="card" href="1-op-1.html">
-      <img src="business-coaching.jpg" alt="Business coaching">
+      <img src="vg-gesprek.jpg" alt="Business coaching met Salar Azimi">
       <span class="num">03</span>
       <div class="txt"><span class="lbl">Strategie · Groei</span><h3>Business coaching</h3><p>Scherp je strategie aan, bespreek obstakels en werk gericht aan de volgende fase van je bedrijf.</p><span class="more">Meer informatie</span></div>
     </a>

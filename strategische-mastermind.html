@@ -26,7 +26,7 @@
     </div>
     <div class="inc-hero-cta fn-cta">
       <button class="btn-gold inc-btn fn-big" type="button" data-open="fn-modal">Ik ben klaar om te schalen <span>→</span></button>
-      <span class="inc-note">Beperkt aantal plekken · €4.995 excl. btw</span>
+      <span class="inc-note">Beperkt aantal plekken · persoonlijke selectie</span>
     </div>
   </div>
 </section>
@@ -56,12 +56,12 @@
       <h2>Vijf dagen werken aan je bedrijf. <b>Buiten kantoor.</b></h2>
       <p>Overdag werk je met Salar en Rabi aan je strategie. Daaromheen ontstaan de gesprekken, connecties en inzichten waarmee je terugkomt.</p>
       <dl class="inc-facts"><div><dt>5 dagen Marrakech</dt><dd>4 nachten, volledig verzorgd</dd></div><div><dt>Salar &amp; Rabi</dt><dd>Persoonlijke begeleiding</dd></div><div><dt>1-op-1 momenten</dt><dd>Jouw bedrijf op tafel</dd></div><div><dt>All inclusive</dt><dd>Van aankomst tot afsluiting</dd></div></dl>
-      <div class="inc-price-row"><button class="btn-gold inc-btn" type="button" data-open="fn-modal">Ik ben klaar om te schalen <span>→</span></button><div class="inc-price"><b>€4.995</b><span>exclusief btw</span></div></div>
+      <div class="inc-price-row"><button class="btn-gold inc-btn" type="button" data-open="fn-modal">Ik ben klaar om te schalen <span>→</span></button></div>
     </div>
   </div>
 </section>
 <section class="fn-gal"><div class="inc-in"><span class="px-eyebrow">Sfeer &amp; impressie</span><div class="fn-gal-grid"><img class="rv" src="vg-groep.jpg" alt="" loading="lazy"><img class="rv" src="vg-champagne.jpg" alt="" loading="lazy"><img class="rv" src="vg-gesprek.jpg" alt="" loading="lazy"><img class="rv" src="inc-marrakech.jpg" alt="" loading="lazy"></div></div></section>
-<section class="fn-faq"><div class="inc-in fn-faq-grid"><div class="rv"><span class="px-eyebrow">Veelgestelde vragen</span><h2>Goed om te weten.</h2></div><div class="fn-acc"><details class="rv"><summary>Wat is de Strategy Mastermind?</summary><p>Een ondernemersreis van vijf dagen naar Marrakech met Salar Azimi en Rabi Adli. Je werkt aan je bedrijf, krijgt 1-op-1 momenten en bouwt een netwerk op met ondernemers die verder willen.</p></details><details class="rv"><summary>Wanneer is het?</summary><p>Van 12 tot en met 16 november 2026: vier nachten, vijf dagen.</p></details><details class="rv"><summary>Wat kost deelname?</summary><p>€4.995 exclusief btw. Wat er precies is inbegrepen bij reis en verblijf, nemen we in het gesprek met je door.</p></details><details class="rv"><summary>Hoe werkt aanmelden?</summary><p>Je vult het formulier in. Daarna belt ons team je om te bespreken of de Mastermind bij jou en je bedrijf past. Pas als het van beide kanten klopt, wordt je plek bevestigd.</p></details><details class="rv"><summary>Is dit iets voor mijn bedrijf?</summary><p>De Mastermind is voor ondernemers die serieus willen groeien. In het kennismakingsgesprek kijken we samen of het nu het juiste moment voor je is.</p></details><details class="rv"><summary>Kan ik mijn deelname annuleren?</summary><p>Na betaling is restitutie niet mogelijk. Twijfel je? Bespreek het eerst in de call, daar is die voor.</p></details></div></div></section>
+<section class="fn-faq"><div class="inc-in fn-faq-grid"><div class="rv"><span class="px-eyebrow">Veelgestelde vragen</span><h2>Goed om te weten.</h2></div><div class="fn-acc"><details class="rv"><summary>Wat is de Strategy Mastermind?</summary><p>Een ondernemersreis van vijf dagen naar Marrakech met Salar Azimi en Rabi Adli. Je werkt aan je bedrijf, krijgt 1-op-1 momenten en bouwt een netwerk op met ondernemers die verder willen.</p></details><details class="rv"><summary>Wanneer is het?</summary><p>Van 12 tot en met 16 november 2026: vier nachten, vijf dagen.</p></details><details class="rv"><summary>Hoe werkt aanmelden?</summary><p>Je vult het formulier in. Daarna belt ons team je om te bespreken of de Mastermind bij jou en je bedrijf past. Pas als het van beide kanten klopt, wordt je plek bevestigd.</p></details><details class="rv"><summary>Is dit iets voor mijn bedrijf?</summary><p>De Mastermind is voor ondernemers die serieus willen groeien. In het kennismakingsgesprek kijken we samen of het nu het juiste moment voor je is.</p></details></div></div></section>
 <section class="inc-final fn-final">
   <div class="inc-in">
     <h2>Ben jij klaar om <b>nieuwe toppen</b> te bereiken?</h2>
@@ -82,7 +82,7 @@
     <div class="bm-form">
       <span class="lbl brown">Bekijk of je geschikt bent</span>
       <h2 id="fn-mt">Strategy Mastermind Marrakech</h2>
-      <div class="bm-product"><span>12 t/m 16 november 2026 · Marrakech</span><b>€4.995</b></div>
+      <div class="bm-product"><span>12 t/m 16 november 2026 · Marrakech</span></div>
       <form class="m-form" novalidate>
         <div class="f-row"><label for="fn-naam">Naam <i>*</i></label><input id="fn-naam" autocomplete="name" required></div>
         <div class="f-row"><label for="fn-mail">E-mail <i>*</i></label><input id="fn-mail" type="email" autocomplete="email" required></div>
@@ -102,6 +102,11 @@
 <a id="fn-thanks" href="bedankt-voor-het-vertrouwen.html" hidden>Bedankt</a>
 <script>
 (function(){
+  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
+  window.AZ_MAIL='info@salar-azimi.nl';
+  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
+    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?l.textContent.replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
+    return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
   // geluid op de hoofdvideo
   var v=document.getElementById('fn-vid'),b=document.getElementById('fn-sound');
   if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan'});
@@ -119,8 +124,9 @@
     var f=M.querySelector('form');f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
       f.querySelectorAll('input[required],select[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));i.classList.toggle('bad',bad);if(bad)ok=false});
       f.querySelector('.f-err').hidden=ok;if(!ok)return;
+      var sent=azSend(f,document.getElementById('fn-mt').textContent)||Promise.resolve();f.querySelector('button[type=submit]').disabled=true;
       try{sessionStorage.setItem('fn-naam',(document.getElementById('fn-naam').value||'').split(' ')[0])}catch(err){}
-      location.href=document.getElementById('fn-thanks').getAttribute('href')+'?aanvraag=1'})}
+      var go=function(){location.href=document.getElementById('fn-thanks').getAttribute('href')+'?aanvraag=1'};Promise.race([sent,new Promise(function(r){setTimeout(r,1500)})]).then(go,go)})}
   document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(M&&!M.hidden)closeM();if(!P.hidden)closeP()});
   // naam op bedankpagina
   var n=document.getElementById('fn-name');if(n){try{var x=sessionStorage.getItem('fn-naam');if(x)n.textContent=(n.dataset.pre||' ')+x}catch(err){}}
