@@ -2516,3 +2516,15 @@ a.pf-card:hover,.pf-card:hover{transform:translateY(-.4rem);border-color:rgba(22
   .f-row input,.f-row select{height:48px;font-size:16px}
   .f-row textarea{font-size:16px}
 }
+button.ct-wa-btn{border:0;cursor:pointer;font-family:var(--font)}
+.ct-wa-btn>span{font-size:1.1em;line-height:1}
+button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-shadow:none!important}
+.ct-chips-row label small{font-weight:400;opacity:.6;margin-left:6px;font-size:12px}
+.ct-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ct-chip{cursor:pointer}
+.ct-chip input{position:absolute;opacity:0;pointer-events:none}
+.ct-chip span{display:inline-block;padding:9px 14px;border:1px solid #e2d8c6;border-radius:99px;background:#fffdf9;font-size:13px;font-weight:600;color:var(--black);transition:background .15s,border-color .15s,color .15s}
+.ct-chip input:checked+span{background:var(--black);border-color:var(--black);color:#fff}
+.ct-chip input:focus-visible+span{box-shadow:0 0 0 3px rgba(184,149,74,.35)}
+.ct-chips-val{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.ct-chips-row:has(.ct-chips-val.bad) .ct-chip span{border-color:#c4473a}

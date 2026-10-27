@@ -17,7 +17,7 @@
     <div class="dd"><a href="events.html">Oplossingen<span class="chev">⌄</span></a>
       <div class="menu">
         <div><h5>Events</h5><a href="events.html">Alle events &amp; incentives</a><a href="wereldkaart.html">Wereldkaart</a><a href="azimi-netwerk-event.html">Azimi Network Event</a><a href="vastgoed.html">Vastgoed Masterclass</a></div>
-        <div><h5>Incentives</h5><a href="azimi-inc.html">Azimi Inc</a><a href="strategische-mastermind.html">Strategy Mastermind</a></div>
+        <div><h5>Incentives</h5><a href="azimi-inc.html">Azimi Experience</a><a href="strategische-mastermind.html">Strategy Mastermind</a></div>
         <div><h5>Coaching</h5><a href="inner-circle.html">Inner Circle Coaching</a><a href="diamond.html">Diamond Coaching</a><a href="1-op-1.html">Coaching gesprek</a></div>
       </div></div>
     <a href="azimi-marketing.html">Azimi Marketing</a>
@@ -40,7 +40,7 @@
   <button class="close" id="mclose" aria-label="Menu sluiten">×</button>
   <a href="index.html">Home</a>
   <h5>Events</h5><a href="wereldkaart.html">Wereldkaart</a><a href="azimi-netwerk-event.html">Azimi Network Event</a><a href="vastgoed.html">Vastgoed Masterclass</a>
-  <h5>Incentives</h5><a href="azimi-inc.html">Azimi Inc</a><a href="strategische-mastermind.html">Strategy Mastermind</a>
+  <h5>Incentives</h5><a href="azimi-inc.html">Azimi Experience</a><a href="strategische-mastermind.html">Strategy Mastermind</a>
   <h5>Coaching</h5><a href="inner-circle.html">Inner Circle Coaching</a><a href="diamond.html">Diamond Coaching</a><a href="1-op-1.html">Coaching gesprek</a>
   <h5>Meer</h5><a href="portfolio.html">Portfolio</a><a href="azimi-marketing.html">Azimi Marketing</a><a href="podcasts.html">Media</a><a href="over-ons.html">Over ons</a><a href="careers.html">Careers</a><a href="boeken.html">Boek</a><a href="vastgoed.html">Vastgoed</a>
   <a href="contact.html" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
@@ -351,7 +351,7 @@
       <p>Strategie, 1-op-1 momenten en een netwerk dat blijft. All inclusive, beperkt aantal plekken.</p>
       <div class="incpop-btns">
         <a class="incpop-main" href="strategische-mastermind.html">Meld je aan <span>→</span></a>
-        <a class="incpop-dm" id="incpop-dm" href="https://ig.me/m/salarazimi" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C7 3 3 6.7 3 11.3c0 2.6 1.3 4.9 3.3 6.4V21l3-1.7c.9.3 1.8.4 2.7.4 5 0 9-3.7 9-8.4S17 3 12 3z"/></svg><span>Stuur een DM</span></a>
+        <a class="incpop-dm" id="incpop-dm" href="#" data-soon="1"><span>Plan een gesprek</span></a>
       </div>
       <span class="incpop-price">€4.995 ex. btw</span>
     </div>
@@ -373,8 +373,8 @@
   // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
   window.AZ_MAIL='info@salar-azimi.nl';
   window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
-    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?l.textContent.replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
-    return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
+    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit'||i.type==='checkbox'||i.type==='radio')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?(l.childNodes[0].textContent||l.textContent).replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
+    return fetch('https://formsubmit.co/ajax/'+(f.getAttribute('data-mail')||window.AZ_MAIL),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
   // Formulieren in pop-ups (boek, masterclass)
   function openM(m){m.hidden=false;document.body.style.overflow='hidden';var i=m.querySelector('input');if(i)setTimeout(function(){i.focus()},50)}
   function closeM(m){m.hidden=true;document.body.style.overflow=''}
@@ -384,7 +384,7 @@
     var f=m.querySelector('form');if(!f)return;
     f.addEventListener('submit',function(e){
       e.preventDefault();var ok=true;
-      f.querySelectorAll('input[required]').forEach(function(i){
+      f.querySelectorAll('[required]').forEach(function(i){
         var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));
         i.classList.toggle('bad',bad);if(bad)ok=false;});
       f.querySelector('.f-err').hidden=ok;if(!ok)return;
@@ -399,9 +399,7 @@
 
   // Pop-up aankomende incentive na 30 seconden, één keer per bezoek
   (function(){
-    var WHATSAPP='31615539816';// vul hier het nummer in, bijv. '31612345678', dan wordt de knop WhatsApp
     var P=document.getElementById('incpop');if(!P||/azimi-inc|events/.test(location.pathname))return;
-    if(WHATSAPP){var d=document.getElementById('incpop-dm');d.href='https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent('Hoi! Ik heb interesse in de Marrakech Strategy Incentive.');d.querySelector('span').textContent='WhatsApp ons'}
     var seen=false;try{seen=sessionStorage.getItem('incpop')==='1'}catch(e){}
     if(seen)return;
     function show(){if(document.querySelector('.modal:not([hidden]),.px-ep:not([hidden]),.mnav.open'))return setTimeout(show,5000);P.hidden=false;requestAnimationFrame(function(){P.classList.add('on')});try{sessionStorage.setItem('incpop','1')}catch(e){}}
