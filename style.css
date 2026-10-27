@@ -2313,3 +2313,51 @@ a.pf-card:hover,.pf-card:hover{transform:translateY(-.4rem);border-color:rgba(22
   .ty-last li{font-size:13px}
   .ty-bar{left:10px;right:10px;transform:translateY(140%);justify-content:space-between;font-size:12.5px;border-radius:14px}.ty-bar.on{transform:none}.ty-bar a{font-size:12.5px;padding:8px 12px}
 }
+.px-all .px-thumb{background:radial-gradient(circle at 30% 20%,rgba(223,185,110,.22),transparent 60%),linear-gradient(160deg,#1a150d,#0b0906);border:1px solid rgba(223,185,110,.35)}
+.px-all-in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;text-align:center;padding:1rem;color:#f4eee3}
+.px-all-in b{font-size:1.25rem;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+.px-all-in small{font-size:.9rem;color:#dfb96e;font-weight:600}
+.px-all-ic{display:grid;place-items:center;width:3.4rem;height:3.4rem;border-radius:50%;border:1px solid #dfb96e;transition:background .25s,transform .25s}
+.px-all-ic svg{width:1.4rem;height:1.4rem;fill:none;stroke:#dfb96e;stroke-width:2.2;transition:stroke .25s}
+.px-all:hover .px-all-ic{background:#dfb96e;transform:translateX(3px)}.px-all:hover .px-all-ic svg{stroke:#111}
+@media(max-width:699px){.px-all-in b{font-size:14px}.px-all-in small{font-size:11px}.px-all-ic{width:34px;height:34px}}
+.px-allh{margin-left:1.2rem;font-size:.95rem;font-weight:600;color:#dfb96e;text-decoration:none;opacity:.85;transition:opacity .2s}
+.px-allh:hover{opacity:1;text-decoration:underline}
+@media(max-width:699px){.px-allh{display:block;margin:4px 0 0;font-size:12px}}
+.hdr-cta{border-color:#d2b36b!important;color:#d2b36b!important}
+.hdr-cta:hover{background:#d2b36b!important;color:#111!important}
+.ct-form-sec{background:#f8f4ec;color:var(--black);padding:6.5rem 0}
+.ct-form-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem;align-items:start}
+.ct-form-sec h2{font-size:3rem;font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-top:.8rem}
+.ct-form-sec p{margin-top:1rem;font-size:1.15rem;line-height:1.6;color:#5a5245}
+.ct-form-sec .ct-k{color:#96702d}
+.ct-mail a{color:#96702d;font-weight:700}
+.ct-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem;background:#fff;border:1px solid #ebe2d2;border-radius:1.2rem;padding:2.2rem}
+.ct-form .f-row.one{grid-column:1/-1}
+.ct-form select,.ct-form textarea{width:100%;border:1px solid #e2d8c6;border-radius:.9rem;background:#fffdf9;font:400 1.3rem var(--font);color:var(--black);padding:1.2rem 1.4rem;outline:0}
+.ct-form select{height:6.15rem}
+.ct-form textarea{resize:vertical;min-height:12rem}
+.ct-form select.bad,.ct-form textarea.bad{border-color:#c0392b}
+.ct-form .f-err,.ct-form .btn-gold{grid-column:1/-1;justify-self:start}
+.ct-done{grid-column:1/-1;display:flex;flex-direction:column;gap:.4rem;padding:1.4rem;border-radius:.9rem;background:#f3ecdd}
+.ct-done b{font-size:1.3rem}
+@media(max-width:899px){.ct-form-grid{grid-template-columns:1fr;gap:20px}.ct-form{grid-template-columns:1fr;padding:18px}.ct-form-sec{padding:48px 0}.ct-form-sec h2{font-size:28px}.ct-form-sec p{font-size:14.5px}.ct-form select,.ct-form textarea{font-size:15px}.ct-form select{height:52px}}
+/* mobiel: kaarten netjes + Onderweg als carousel */
+@media(max-width:699px){
+  .cards{grid-auto-columns:78%;gap:10px}
+  .card{aspect-ratio:auto;height:440px}
+  .card .num{top:14px;left:auto;right:14px;width:34px;height:34px;font-size:11px}
+  .card .txt{left:20px;right:20px;bottom:22px}
+  .card .lbl{font-size:10px}
+  .card h3{font-size:27px;line-height:1.05;margin-top:8px}
+  .card p{font-size:14px;line-height:1.5;margin-top:10px}
+  .card .more{margin-top:14px;font-size:11px}
+  .ow{display:grid;grid-template-columns:none;grid-template-rows:none;grid-auto-flow:column;grid-auto-columns:78%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -24px;padding:0 24px 6px}
+  .ow::-webkit-scrollbar{display:none}
+  .ow .tile,.ow .tile.big{grid-row:auto;min-height:0;height:380px;scroll-snap-align:start}
+  .ow .tile h3,.ow .tile.big h3{font-size:26px}
+  .ow .tile .txt{left:20px;right:70px;bottom:22px}
+  .ow .arrow{right:16px;bottom:18px;width:42px;height:42px;font-size:16px}
+  .ow-head .tabs{display:flex;overflow-x:auto;gap:18px;scrollbar-width:none;max-width:100%}
+}
+@media(max-width:699px){.cards,.ow{scroll-padding-inline:24px}}
