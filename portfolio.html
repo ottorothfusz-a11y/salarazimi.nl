@@ -16,8 +16,7 @@
     <a href="index.html">Home</a>
     <div class="dd"><a href="events.html">Oplossingen<span class="chev">⌄</span></a>
       <div class="menu">
-        <div><h5>Events</h5><a href="events.html">Alle events &amp; incentives</a><a href="wereldkaart.html">Wereldkaart</a><a href="azimi-netwerk-event.html">Azimi Network Event</a><a href="vastgoed.html">Vastgoed Masterclass</a></div>
-        <div><h5>Incentives</h5><a href="azimi-inc.html">Azimi Experience</a><a href="strategische-mastermind.html">Strategy Mastermind</a></div>
+        <div><h5>Events</h5><a href="events.html">Alle events &amp; incentives</a><a href="wereldkaart.html">Wereldkaart</a><a href="azimi-netwerk-event.html">Azimi Network Event</a><a href="strategische-mastermind.html">Strategy Mastermind</a><a href="vastgoed.html">Vastgoed Masterclass</a></div>
         <div><h5>Coaching</h5><a href="inner-circle.html">Inner Circle Coaching</a><a href="diamond.html">Diamond Coaching</a><a href="1-op-1.html">Coaching gesprek</a></div>
       </div></div>
     <a href="azimi-marketing.html">Azimi Marketing</a>
@@ -39,8 +38,7 @@
 <div class="mnav" id="mnav">
   <button class="close" id="mclose" aria-label="Menu sluiten">×</button>
   <a href="index.html">Home</a>
-  <h5>Events</h5><a href="wereldkaart.html">Wereldkaart</a><a href="azimi-netwerk-event.html">Azimi Network Event</a><a href="vastgoed.html">Vastgoed Masterclass</a>
-  <h5>Incentives</h5><a href="azimi-inc.html">Azimi Experience</a><a href="strategische-mastermind.html">Strategy Mastermind</a>
+  <h5>Events</h5><a href="wereldkaart.html">Wereldkaart</a><a href="azimi-netwerk-event.html">Azimi Network Event</a><a href="strategische-mastermind.html">Strategy Mastermind</a><a href="vastgoed.html">Vastgoed Masterclass</a>
   <h5>Coaching</h5><a href="inner-circle.html">Inner Circle Coaching</a><a href="diamond.html">Diamond Coaching</a><a href="1-op-1.html">Coaching gesprek</a>
   <h5>Meer</h5><a href="portfolio.html">Portfolio</a><a href="azimi-marketing.html">Azimi Marketing</a><a href="podcasts.html">Media</a><a href="over-ons.html">Over ons</a><a href="careers.html">Careers</a><a href="boeken.html">Boek</a><a href="vastgoed.html">Vastgoed</a>
   <a href="contact.html" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
@@ -51,7 +49,7 @@
     <span class="dm-eyebrow">Portfolio</span>
     <h1>Eén ondernemer.<br><b>Een heel ecosysteem.</b></h1>
     <p>Van hotels en vastgoed tot eigen merken en diensten voor ondernemers. Dit zijn de bedrijven van Salar Azimi.</p>
-    <div class="pf-stats"><div><b>5</b><span>Hospitality</span></div><div><b>7</b><span>Vastgoed &amp; retail</span></div><div><b>8</b><span>Eigen merken</span></div><div><b>3</b><span>Media &amp; diensten</span></div><div><b>1</b><span>Sport</span></div></div>
+    <div class="pf-stats"><div><b data-count="5">5</b><span>Hospitality</span></div><div><b data-count="7">7</b><span>Vastgoed &amp; retail</span></div><div><b data-count="8">8</b><span>Eigen merken</span></div><div><b data-count="3">3</b><span>Media &amp; diensten</span></div><div><b data-count="1">1</b><span>Sport</span></div></div>
     <nav class="pf-chips" aria-label="Categorieën"><button type="button" class="on" data-f="all">Alles <i>24</i></button><button type="button" data-f="hospitality">Hospitality <i>5</i></button><button type="button" data-f="vastgoed">Vastgoed &amp; retail <i>7</i></button><button type="button" data-f="merken">Eigen merken <i>8</i></button><button type="button" data-f="diensten">Media &amp; diensten <i>3</i></button><button type="button" data-f="sport">Sport <i>1</i></button></nav>
   </div>
 </section>
@@ -85,6 +83,18 @@
     <div class="pf-grid"><a class="pf-card rv" href="https://patroeisden.com/" target="_blank" rel="noopener noreferrer"><span class="pf-media"><img src="pf-patro.jpg" alt="" loading="lazy"></span><span class="pf-body"><span class="pf-cat">Sport</span><h3>Patro Eisden Maasmechelen</h3><span class="pf-loc">Voormalige club · België</span><p>De Belgische voetbalclub uit Maasmechelen, die eerder van Salar was.</p><span class="pf-go">Bekijk <i>→</i></span></span></a></div>
   </div>
 </section>
+<script>
+(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,cs=document.querySelectorAll('[data-count]');
+  function fmt(n,sep){var s=String(Math.round(n));return sep?s.replace(/\B(?=(\d{3})+(?!\d))/g,sep):s}
+  function run(el){var to=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'',sep=el.dataset.sep||'',t0=performance.now(),d=1600;
+    if(rm){el.textContent=pre+fmt(to,sep)+suf;return}
+    (function f(t){var p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);el.textContent=pre+fmt(to*e,sep)+suf;if(p<1)requestAnimationFrame(f)})(t0)}
+  if(!('IntersectionObserver' in window)||rm)return;
+  cs.forEach(function(el){el.textContent=(el.dataset.pre||'')+'0'+(el.dataset.suf||'')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);run(e.target)}})},{threshold:.4});
+  cs.forEach(function(el){io.observe(el)});
+})();
+</script>
 <section class="pf-final">
   <div class="pf-in rv">
     <h2>Zakelijk samenwerken <b>met de groep?</b></h2>

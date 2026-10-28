@@ -31,7 +31,7 @@
     </div>
   </div>
 </section>
-<section class="nw-stats"><div class="nw-stats-in"><div class="rv"><b>5.800</b><span>Ondernemers geholpen</span></div><div class="rv"><b>22</b><span>Jaar ervaring</span></div><div class="rv"><b>1.000+</b><span>Jaarlijkse deelnemers</span></div><div class="rv"><b>78%</b><span>Terugkerende klanten</span></div></div></section>
+<section class="nw-stats"><div class="nw-stats-in"><div class="rv"><b data-count="5800" data-sep="." data-suf="">5.800</b><span>Ondernemers geholpen</span></div><div class="rv"><b data-count="22" data-sep="" data-suf="">22</b><span>Jaar ervaring</span></div><div class="rv"><b data-count="1000" data-sep="." data-suf="+">1.000+</b><span>Jaarlijkse deelnemers</span></div><div class="rv"><b data-count="78" data-sep="" data-suf="%">78%</b><span>Terugkerende klanten</span></div></div></section>
 <section class="nw-sum nw-auto" data-need="video"><div class="inc-in"><div class="nw-head rv"><span class="px-eyebrow">In drie minuten</span><h2>Zo ervaren ondernemers <b>het Azimi Network Event.</b></h2></div>
   <div class="nw-sum-v rv"><video controls playsinline preload="metadata" poster="vg-groep.jpg" src="nw-testi-samenvatting.mp4"></video></div></div></section>
 <section class="nw-testis nw-auto" data-need=".nw-tc"><div class="inc-in"><div class="nw-head rv"><span class="px-eyebrow">Ervaringen</span><h2>Wat deelnemers <b>ervan zeggen.</b></h2><p>Bekijk de ervaringen van ondernemers die eerdere bijeenkomsten en zakelijke events hebben meegemaakt.</p></div><div class="nw-tgrid"><button type="button" class="nw-tc rv" data-src="nw-testi-1.mp4"><span class="nw-tc-m"><video muted playsinline preload="metadata" src="nw-testi-1.mp4#t=0.5"></video><span class="ty-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span></span></button><button type="button" class="nw-tc rv" data-src="nw-testi-2.mp4"><span class="nw-tc-m"><video muted playsinline preload="metadata" src="nw-testi-2.mp4#t=0.5"></video><span class="ty-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span></span></button><button type="button" class="nw-tc rv" data-src="nw-testi-3.mp4"><span class="nw-tc-m"><video muted playsinline preload="metadata" src="nw-testi-3.mp4#t=0.5"></video><span class="ty-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z"/></svg></span></span></button></div><div class="nw-cta rv"><button class="btn-gold inc-btn" type="button" data-open="fn-modal">Ik ben klaar om te schalen <span>→</span></button></div></div></section>
@@ -139,6 +139,18 @@
   // testimonial in speler
   var P=document.getElementById('inc-player'),pv=document.getElementById('inc-player-v');
   document.querySelectorAll('.nw-tc').forEach(function(b){b.addEventListener('click',function(){pv.src=b.dataset.src;P.hidden=false;document.body.style.overflow='hidden';pv.play().catch(function(){})})});
+})();
+</script>
+<script>
+(function(){var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,cs=document.querySelectorAll('[data-count]');
+  function fmt(n,sep){var s=String(Math.round(n));return sep?s.replace(/\B(?=(\d{3})+(?!\d))/g,sep):s}
+  function run(el){var to=+el.dataset.count,pre=el.dataset.pre||'',suf=el.dataset.suf||'',sep=el.dataset.sep||'',t0=performance.now(),d=1600;
+    if(rm){el.textContent=pre+fmt(to,sep)+suf;return}
+    (function f(t){var p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);el.textContent=pre+fmt(to*e,sep)+suf;if(p<1)requestAnimationFrame(f)})(t0)}
+  if(!('IntersectionObserver' in window)||rm)return;
+  cs.forEach(function(el){el.textContent=(el.dataset.pre||'')+'0'+(el.dataset.suf||'')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);run(e.target)}})},{threshold:.4});
+  cs.forEach(function(el){io.observe(el)});
 })();
 </script>
 <script>
