@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="hdr" id="hdr">
-  <a class="logo" href="index.html"><img src="logo-header.webp" alt="Salar Azimi"></a>
+  <a class="logo" href="index.html"><img src="images/logo-header.webp" alt="Salar Azimi"></a>
   <nav class="nav">
     <a href="index.html">Home</a>
     <div class="dd"><a class="on" href="events.html">Oplossingen<span class="chev">⌄</span></a>
@@ -45,16 +45,16 @@
 </div>
 
 <section class="ev-hero">
-  <video class="ev-hero-v" autoplay muted loop playsinline poster="ev-luxe.jpg"><source src="ev-luxe.mp4" type="video/mp4"></video>
+  <video class="ev-hero-v" autoplay muted loop playsinline poster="images/ev-luxe.jpg"><source src="images/ev-luxe.mp4" type="video/mp4"></video>
   <div class="ev-hero-in">
     <span class="dm-eyebrow">Exclusieve events &amp; incentives</span>
     <h1>Waar de juiste mensen<br><b>samenkomen.</b></h1>
     <p>Deelname aan de meest exclusieve zakelijke en netwerkevenementen van Salar Azimi. Van een avond op het kasteel tot vijf dagen Marrakech.</p>
-    <div class="ev-next" id="ev-next" hidden>
+    <div class="ev-next" id="ev-next">
       <span class="ev-next-lbl"><i></i>Eerstvolgende</span>
-      <b id="ev-next-name"></b>
-      <span id="ev-next-when"></span>
-      <a class="btn-gold dm-btn" href="#agenda">Bekijk de agenda <span>↓</span></a>
+      <b>Strategy Mastermind Marrakech</b>
+      <span>12 t/m 16 november 2026 · Marrakech</span>
+      <a class="btn-gold dm-btn" href="strategische-mastermind.html">Bekijk Marrakech <span>→</span></a>
       <a class="ev-map" href="wereldkaart.html">◎ Bekijk op de wereldkaart</a>
     </div>
   </div>
@@ -126,7 +126,7 @@
   live.forEach(function(e,i){
     var a=document.createElement('article');a.className='ev-card'+(e.was?' deal':'');a.dataset.type=e.type;a.id=e.id;
     var soon=Math.ceil((new Date(e.start+'T00:00:00')-today)/864e5);
-    a.innerHTML='<video muted loop playsinline preload="metadata" poster="ev-'+e.vid+'.jpg"><source src="ev-'+e.vid+'.mp4" type="video/mp4"></video>'+
+    a.innerHTML='<video muted loop playsinline preload="metadata" poster="images/ev-'+e.vid+'.jpg"><source src="images/ev-'+e.vid+'.mp4" type="video/mp4"></video>'+
       '<div class="ev-card-top"><span class="ev-type">'+(e.type==='event'?'Event':'Incentive')+'</span>'+(e.was?'<span class="ev-off">−40%</span>':(soon>=0&&soon<=14?'<span class="ev-soon">Over '+(soon===0?'vandaag':soon+(soon===1?' dag':' dagen'))+'</span>':''))+'</div>'+
       '<div class="ev-card-body"><span class="ev-when">'+e.when+'</span><h3>'+e.name+'</h3><span class="ev-where">'+e.where+'</span>'+
       '<ul>'+e.pts.map(function(p){return '<li>'+p+'</li>'}).join('')+'</ul>'+(e.extra?'<p class="ev-extra">✦ '+e.extra+'</p>':'')+
@@ -138,7 +138,6 @@
   var t=document.createElement('article');t.className='ev-card ev-ask';t.style.gridColumn='span '+(3-live.length%3);
   t.innerHTML='<div class="ev-card-body"><span class="ev-when">Niet zeker welke past?</span><h3>We denken met je mee.</h3><p>Laat je gegevens achter, dan bespreken we persoonlijk welk event of welke reis het beste bij jou en je onderneming past.</p><button class="btn-gold dm-btn" type="button" data-open="ev-modal" data-ev="advies">Plan een kennismaking <span>→</span></button></div>';
   g.appendChild(t);
-  if(live[0]){var n=document.getElementById('ev-next');n.hidden=false;document.getElementById('ev-next-name').textContent=live[0].name;document.getElementById('ev-next-when').textContent=live[0].when+' · '+live[0].where}
   // juiste interne link voor Marrakech (in de build worden absolute paden herschreven)
   // modal invullen
   document.addEventListener('click',function(ev){var b=ev.target.closest('[data-ev]');if(!b)return;var e=EV.filter(function(x){return x.id===b.dataset.ev})[0];
@@ -158,7 +157,7 @@
 <footer class="ftr">
   <div class="top">
     <div class="brand">
-      <img src="logo-header.webp" alt="Salar Azimi">
+      <img src="images/logo-header.webp" alt="Salar Azimi">
       <h3>Business.<br>Vastgoed.<br>Netwerk.</h3>
       <p>Ondernemerschap, ervaringen en toegang tot een netwerk waar echte gesprekken ontstaan.</p>
     </div>
@@ -215,7 +214,7 @@
 <div class="incpop" id="incpop" hidden>
   <div class="incpop-box" role="dialog" aria-modal="true" aria-labelledby="incpop-t">
     <button class="incpop-x" type="button" aria-label="Sluiten">×</button>
-    <div class="incpop-img"><img src="inc-marrakech.jpg" alt="Resort in Marrakech" loading="lazy"><span class="incpop-tag"><i></i>Aankomende incentive</span></div>
+    <div class="incpop-img"><img src="images/inc-marrakech.jpg" alt="Resort in Marrakech" loading="lazy"><span class="incpop-tag"><i></i>Aankomende incentive</span></div>
     <div class="incpop-body">
       <span class="incpop-date">12 – 16 november 2026 · Marrakech</span>
       <h2 id="incpop-t">Vijf dagen Marrakech met Salar.</h2>

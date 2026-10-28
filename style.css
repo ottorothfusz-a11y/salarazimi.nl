@@ -1428,7 +1428,7 @@ a.px-card{text-decoration:none}
 .dm-hero-in{position:relative;z-index:2;width:100%;max-width:112rem;margin:0 auto;padding:0 var(--pad) 5.6rem}
 .dm-badge{position:relative;width:6.6rem;margin-bottom:1.8rem;animation:dm-float 5s ease-in-out infinite,dm-in .9s cubic-bezier(.2,.7,.2,1) both;filter:drop-shadow(0 .8rem 1.6rem rgba(0,0,0,.5))}
 .dm-badge img{width:100%;height:auto;display:block}
-.dm-shine{position:absolute;inset:0;-webkit-mask:url(diamond-badge.png) center/contain no-repeat;mask:url(diamond-badge.png) center/contain no-repeat;background:linear-gradient(110deg,transparent 35%,rgba(255,240,200,.85) 50%,transparent 65%);background-size:250% 100%;animation:dm-sweep 4.5s ease-in-out 1.2s infinite}
+.dm-shine{position:absolute;inset:0;-webkit-mask:url(images/diamond-badge.png) center/contain no-repeat;mask:url(images/diamond-badge.png) center/contain no-repeat;background:linear-gradient(110deg,transparent 35%,rgba(255,240,200,.85) 50%,transparent 65%);background-size:250% 100%;animation:dm-sweep 4.5s ease-in-out 1.2s infinite}
 @keyframes dm-sweep{0%{background-position:150% 0}45%,100%{background-position:-60% 0}}
 @keyframes dm-float{50%{transform:translateY(-.4rem)}}
 @keyframes dm-in{from{opacity:0;transform:translateY(1.4rem)}to{opacity:1}}
@@ -2705,3 +2705,8 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 .nw-gold .nw-badge{background:linear-gradient(180deg,#f6d77f,#d9a93f);color:#1a1206}
 @media(max-width:1000px){.nw-gold{transform:none}}
 .nw-pk .nw-pgrid{align-items:stretch}
+
+/* eerstvolgende-kaart: wereldkaart-link uitgelijnd onder de datum */
+.ev-next .ev-map{grid-column:1;justify-self:start;margin:.7rem 0 0;font-size:.7rem;letter-spacing:.14em;padding-bottom:.15rem;white-space:nowrap}
+.ev-next .dm-btn{grid-row:1/5}
+@media(max-width:699px){.ev-next .ev-map{margin-top:10px;font-size:11px}.ev-next .dm-btn{grid-row:auto}}
