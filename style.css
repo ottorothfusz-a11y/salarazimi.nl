@@ -2688,3 +2688,20 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 .nw-sum .nw-head{margin-left:auto;margin-right:auto;text-align:center}
 .nw-sum-v{max-width:1000px;margin:0 auto}
 @media(max-width:600px){.nw-vert .inc-film{max-width:78vw}}
+/* pakketten: duidelijk verschil, goud springt eruit */
+.nw-pk .nw-pgrid{align-items:center}
+.nw-bronze{background:linear-gradient(180deg,#1a120c,#0a0705)!important;border-color:rgba(176,112,64,.4)!important}
+.nw-bronze h3{color:#c07a45!important;border-bottom-color:rgba(176,112,64,.3)!important}
+.nw-bronze li:before{background:#b0703f!important}
+.nw-bronze .inc-btn{background:transparent!important;color:#d08a52!important;border:1px solid rgba(208,138,82,.6)!important;box-shadow:none!important}
+.nw-silver h3{color:#e6e8ec!important;border-bottom-color:rgba(220,224,230,.22)!important}
+.nw-silver li:before{background:#cfd3da!important}
+.nw-silver .inc-btn{background:transparent!important;color:#e6e8ec!important;border:1px solid rgba(230,232,236,.5)!important;box-shadow:none!important}
+.nw-gold{position:relative;transform:scale(1.04);z-index:2;background:radial-gradient(ellipse at 50% 0%,rgba(242,203,116,.38),rgba(0,0,0,0) 60%),linear-gradient(180deg,#2b200d,#0d0a05)!important;border:1.5px solid #e9c46a!important;box-shadow:0 0 0 1px rgba(233,196,106,.35),0 30px 80px rgba(233,180,80,.25),0 0 60px rgba(233,196,106,.18)!important}
+.nw-gold h3{background:linear-gradient(180deg,#fff2c4,#e9c46a 45%,#b8862e);-webkit-background-clip:text;background-clip:text;color:transparent!important;border-bottom-color:rgba(233,196,106,.45)!important}
+.nw-gold li{color:#fff!important}
+.nw-gold li:before{background:linear-gradient(135deg,#ffe7a3,#d9a93f)!important}
+.nw-gold .inc-btn{background:linear-gradient(180deg,#f6d77f,#d9a93f)!important;color:#1a1206!important;box-shadow:0 10px 30px rgba(233,180,80,.4)!important}
+.nw-gold .nw-badge{background:linear-gradient(180deg,#f6d77f,#d9a93f);color:#1a1206}
+@media(max-width:1000px){.nw-gold{transform:none}}
+.nw-pk .nw-pgrid{align-items:stretch}
