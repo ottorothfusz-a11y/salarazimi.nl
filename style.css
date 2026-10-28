@@ -2810,3 +2810,31 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
   .cr2-btn{margin-top:1.4rem}
   .cr2-sec{padding-top:4rem}
 }
+
+/* ===== Funnel-hero met achtergrondvideo + focus bij geluid ===== */
+.fn-hasbg{position:relative;overflow:hidden;isolation:isolate}
+.fn-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;background:#000}
+.fn-bg video{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:blur(18px) brightness(.42) saturate(1.1);transform:scale(1.05);transition:filter 1s ease,transform 1.2s ease}
+.fn-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 58%,rgba(0,0,0,.15),rgba(0,0,0,.75) 70%),linear-gradient(180deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,.2) 30%,rgba(0,0,0,.35) 70%,#0a0a0a 100%);transition:background 1s ease}
+.fn-hasbg .inc-film{box-shadow:0 0 0 1px rgba(223,185,110,.28),0 3rem 8rem rgba(0,0,0,.75),0 0 9rem rgba(223,185,110,.12);transition:transform .9s cubic-bezier(.2,.7,.2,1),box-shadow .9s}
+.fn-hasbg .px-eyebrow,.fn-hasbg h1,.fn-hasbg .fn-sub,.fn-hasbg .fn-cta{transition:opacity .8s ease,filter .8s ease}
+/* geluid aan: alle aandacht naar de video */
+.fn-focus .fn-bg video{filter:blur(28px) brightness(.18) saturate(1);transform:scale(1.12)}
+.fn-focus .px-eyebrow,.fn-focus h1,.fn-focus .fn-sub{opacity:.25;filter:blur(1.5px)}
+
+.fn-focus .inc-film{transform:scale(1.035);box-shadow:0 0 0 1px rgba(223,185,110,.5),0 3rem 9rem rgba(0,0,0,.85),0 0 12rem rgba(223,185,110,.22)}
+@media(max-width:700px){.fn-focus .inc-film{transform:none}.fn-bg video{filter:blur(12px) brightness(.4)}}
+@media(prefers-reduced-motion:reduce){.fn-bg video,.fn-hasbg .inc-film{transition:none}}
+
+/* ===== Netwerk event: carrousels op telefoon ===== */
+@media(max-width:700px){
+  .nw-car{display:flex!important;gap:12px!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-left:-20px;margin-right:-20px;padding:14px 20px 6px;scroll-padding:0 20px}
+  .nw-car::-webkit-scrollbar{display:none}
+  .nw-car>*{flex:0 0 84%;scroll-snap-align:center;margin:0!important}
+  .nw-pgrid.nw-car{align-items:stretch;padding-top:22px}
+  .nw-pgrid.nw-car>.nw-p{transform:none!important}
+  .nw-car .rv{opacity:1!important;transform:none!important}
+  .nw-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .nw-dots button{width:7px;height:7px;padding:0;border:0;border-radius:99px;background:rgba(127,112,90,.35);transition:width .3s,background .3s;cursor:pointer}
+  .nw-dots button.on{width:22px;background:#c9a15b}
+}

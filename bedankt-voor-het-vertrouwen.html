@@ -94,7 +94,8 @@
     return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
   // geluid op de hoofdvideo
   var v=document.getElementById('fn-vid'),b=document.getElementById('fn-sound');
-  if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan'});
+  if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan';var hs=v.closest('.fn-hasbg');if(hs)hs.classList.toggle('fn-focus',!v.muted)});
+  if(v&&b&&v.closest('.fn-hasbg')){v.style.cursor='pointer';v.addEventListener('click',function(){b.click()})}
   // reels in speler
   var P=document.getElementById('inc-player'),pv=document.getElementById('inc-player-v'),last;
   function closeP(){pv.pause();pv.removeAttribute('src');pv.load();P.hidden=true;document.body.style.overflow='';if(last)last.focus()}

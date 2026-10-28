@@ -102,7 +102,8 @@
     return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
   // geluid op de hoofdvideo
   var v=document.getElementById('fn-vid'),b=document.getElementById('fn-sound');
-  if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan'});
+  if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan';var hs=v.closest('.fn-hasbg');if(hs)hs.classList.toggle('fn-focus',!v.muted)});
+  if(v&&b&&v.closest('.fn-hasbg')){v.style.cursor='pointer';v.addEventListener('click',function(){b.click()})}
   // reels in speler
   var P=document.getElementById('inc-player'),pv=document.getElementById('inc-player-v'),last;
   function closeP(){pv.pause();pv.removeAttribute('src');pv.load();P.hidden=true;document.body.style.overflow='';if(last)last.focus()}
@@ -171,6 +172,24 @@
   document.getElementById('nw-next').addEventListener('click',function(){var ok=true;s1.querySelectorAll('input[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));i.classList.toggle('bad',bad);if(bad)ok=false});s1.querySelector('.f-err').hidden=ok;if(ok)go(2)});
   document.getElementById('nw-back').addEventListener('click',function(){go(1)});
   document.querySelectorAll('[data-open="fn-modal"]').forEach(function(x){x.addEventListener('click',function(){go(1)})});
+})();
+</script>
+<script>
+(function(){
+  // Op telefoon: reviews, programma en pakketten als swipe-carrousel met bolletjes
+  if(!matchMedia('(max-width:700px)').matches)return;
+  document.querySelectorAll('.nw-rgrid,.nw-egrid,.nw-pgrid').forEach(function(g){
+    var items=[].slice.call(g.children);if(items.length<2)return;
+    g.classList.add('nw-car');var d=document.createElement('div');d.className='nw-dots';
+    items.forEach(function(it,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ga naar '+(i+1));
+      b.onclick=function(){g.scrollTo({left:it.offsetLeft-(g.clientWidth-it.offsetWidth)/2,behavior:'smooth'})};d.appendChild(b)});
+    g.parentNode.insertBefore(d,g.nextSibling);
+    function upd(){var c=g.scrollLeft+g.clientWidth/2,k=0,best=1e9;items.forEach(function(it,i){var m=Math.abs(it.offsetLeft+it.offsetWidth/2-c);if(m<best){best=m;k=i}});
+      [].forEach.call(d.children,function(x,i){x.classList.toggle('on',i===k)})}
+    g.addEventListener('scroll',upd,{passive:true});
+    // pakketten starten op "Meest gekozen"
+    var s=g.querySelector('.nw-silver');if(s)setTimeout(function(){g.scrollLeft=s.offsetLeft-(g.clientWidth-s.offsetWidth)/2;upd()},60);
+    upd()});
 })();
 </script>
 </body>

@@ -29,7 +29,6 @@
     <a href="/over-ons">Over ons</a>
     <a href="/careers">Careers</a>
     <a href="/boeken">Boek</a>
-    <a href="/vastgoed">Vastgoed</a>
   </nav>
   <a class="btn-line" href="/contact">Kom in contact</a>
   <button class="burger" id="burger" aria-label="Menu openen"><div><span></span><span></span></div></button>
@@ -40,7 +39,7 @@
   <a href="/">Home</a>
   <h5>Events</h5><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/strategische-mastermind">Strategy Mastermind</a><a href="/vastgoed">Vastgoed Masterclass</a>
   <h5>Coaching</h5><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a>
-  <h5>Meer</h5><a href="/portfolio">Portfolio</a><a href="/azimi-marketing">Azimi Marketing</a><a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a><a href="/boeken">Boek</a><a href="/vastgoed">Vastgoed</a>
+  <h5>Meer</h5><a href="/portfolio">Portfolio</a><a href="/azimi-marketing">Azimi Marketing</a><a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a><a href="/boeken">Boek</a>
   <a href="/contact" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
 </div>
 
@@ -88,7 +87,8 @@
     return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
   // geluid op de hoofdvideo
   var v=document.getElementById('fn-vid'),b=document.getElementById('fn-sound');
-  if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan'});
+  if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan';var hs=v.closest('.fn-hasbg');if(hs)hs.classList.toggle('fn-focus',!v.muted)});
+  if(v&&b&&v.closest('.fn-hasbg')){v.style.cursor='pointer';v.addEventListener('click',function(){b.click()})}
   // reels in speler
   var P=document.getElementById('inc-player'),pv=document.getElementById('inc-player-v'),last;
   function closeP(){pv.pause();pv.removeAttribute('src');pv.load();P.hidden=true;document.body.style.overflow='';if(last)last.focus()}
@@ -144,7 +144,7 @@
     <div class="flinks">
       <a href="/">Home</a><a href="/events">Oplossingen</a><a href="/azimi-marketing">Azimi Marketing</a>
       <a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a>
-      <a href="/boeken">Boek</a><a href="/vastgoed">Vastgoed</a>
+      <a href="/boeken">Boek</a>
     </div>
     <div class="fc">
       <span class="lbl">Contact</span>
