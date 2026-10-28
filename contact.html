@@ -55,12 +55,12 @@
 <section class="ct-main">
   <div class="ct-in ct-grid">
     <article class="ct-wa rv">
-      <div class="ct-duo"><figure><img src="team-alexander.jpg" alt="Alexander Taselaar" loading="lazy"><figcaption>Alexander</figcaption></figure><figure><img src="team-natalie.jpg" alt="Natalie" loading="lazy"><figcaption>Natalie</figcaption></figure></div>
+      <img class="ct-nat" src="team-natalie.jpg" alt="Natalie" loading="lazy">
       <div>
         <span class="ct-k">Sales &amp; consultancy</span>
-        <h2>Interesse in een product?</h2>
-        <p>Wil je meedoen aan een event, incentive of coachingtraject en heb je nog een vraag vóór je instapt? Laat je gegevens achter, dan nemen Alexander of Natalie persoonlijk contact met je op.</p>
-        <button class="ct-wa-btn" type="button" data-open="ct-sales"><span aria-hidden="true">→</span>Plan een gesprek</button>
+        <h2>Spreek een van onze consultants.</h2>
+        <p>Twijfel je welk event, welke reis of welk coachingtraject bij je past? Dien hieronder je aanvraag in. Een van onze consultants neemt persoonlijk contact met je op en denkt met je mee.</p>
+        <a class="ct-wa-btn" href="#aanvraag"><span aria-hidden="true">↓</span>Aanvraag indienen</a>
         <small>Liever mailen? <a href="mailto:alexander@salarazimi.nl">alexander@salarazimi.nl</a>. Voor al het andere: gebruik het formulier hieronder.</small>
       </div>
     </article>
@@ -73,6 +73,32 @@
     </div>
   </div>
 </section>
+
+<section class="modal ct-inline" id="aanvraag"><div class="ct-in">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cts-t">
+    
+    <div class="bm-form">
+      <span class="lbl brown">Aanvraag indienen</span>
+      <h2 id="cts-t">Spreek een van onze consultants</h2>
+      <form class="m-form" data-mail="alexander@salarazimi.nl" novalidate>
+        <div class="f-row"><label for="cs-naam">Naam <i>*</i></label><input id="cs-naam" autocomplete="name" required></div>
+        <div class="f-row"><label for="cs-tel">Telefoon <i>*</i></label><input id="cs-tel" type="tel" autocomplete="tel" required></div>
+        <div class="f-row one"><label for="cs-mail">E-mail <i>*</i></label><input id="cs-mail" type="email" autocomplete="email" required></div>
+        <div class="f-row one ct-chips-row"><label for="cs-int">Waar heb je interesse in? <i>*</i> <small>Kies er één of meer</small></label><div class="ct-chips"><label class="ct-chip"><input type="checkbox" value="Azimi Network Event"><span>Azimi Network Event</span></label><label class="ct-chip"><input type="checkbox" value="Azimi Experience"><span>Azimi Experience</span></label><label class="ct-chip"><input type="checkbox" value="Strategy Mastermind"><span>Strategy Mastermind</span></label><label class="ct-chip"><input type="checkbox" value="1-op-1 coaching"><span>1-op-1 coaching</span></label><label class="ct-chip"><input type="checkbox" value="Diamond Club"><span>Diamond Club</span></label><label class="ct-chip"><input type="checkbox" value="Inner Circle"><span>Inner Circle</span></label><label class="ct-chip"><input type="checkbox" value="Azimi Marketing"><span>Azimi Marketing</span></label></div><input id="cs-int" class="ct-chips-val" required tabindex="-1" aria-hidden="true"></div>
+        <div class="f-row one"><label for="cs-bron">Hoe heb je ons gevonden? <i>*</i></label><select id="cs-bron" required><option value="">Kies een optie</option><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>Google</option><option>Podcast of tv</option><option>Via iemand die ik ken</option><option>Op een event</option><option>Anders</option></select></div>
+        <div class="f-row one"><label for="cs-vraag">Je vraag</label><textarea id="cs-vraag" rows="3"></textarea></div>
+        <p class="f-err" hidden>Vul alle velden met een * in. Controleer ook je e-mailadres.</p>
+        <button class="btn-dark wide" type="submit">Verstuur aanvraag</button>
+      </form>
+    </div>
+    <div class="bm-done" hidden>
+      <span class="lbl brown">Ontvangen</span>
+      <h2>Bedankt, je aanvraag is binnen.</h2>
+      <p>Een van onze consultants neemt zo snel mogelijk persoonlijk contact met je op.</p>
+      
+    </div>
+  </div>
+</div></section>
 
 <section class="ct-form-sec" id="formulier">
   <div class="ct-in ct-form-grid">
@@ -121,34 +147,10 @@
     </div>
   </div>
 </div>
-<div class="modal" id="ct-sales" hidden>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="cts-t">
-    <button class="modal-x" type="button" data-close aria-label="Sluiten">×</button>
-    <div class="bm-form">
-      <span class="lbl brown">Sales &amp; consultancy</span>
-      <h2 id="cts-t">Plan een gesprek met ons team</h2>
-      <form class="m-form" data-mail="alexander@salarazimi.nl" novalidate>
-        <div class="f-row"><label for="cs-naam">Naam <i>*</i></label><input id="cs-naam" autocomplete="name" required></div>
-        <div class="f-row"><label for="cs-tel">Telefoon <i>*</i></label><input id="cs-tel" type="tel" autocomplete="tel" required></div>
-        <div class="f-row one"><label for="cs-mail">E-mail <i>*</i></label><input id="cs-mail" type="email" autocomplete="email" required></div>
-        <div class="f-row one ct-chips-row"><label for="cs-int">Waar heb je interesse in? <i>*</i> <small>Kies er één of meer</small></label><div class="ct-chips"><label class="ct-chip"><input type="checkbox" value="Azimi Network Event"><span>Azimi Network Event</span></label><label class="ct-chip"><input type="checkbox" value="Azimi Experience"><span>Azimi Experience</span></label><label class="ct-chip"><input type="checkbox" value="Strategy Mastermind"><span>Strategy Mastermind</span></label><label class="ct-chip"><input type="checkbox" value="1-op-1 coaching"><span>1-op-1 coaching</span></label><label class="ct-chip"><input type="checkbox" value="Diamond Club"><span>Diamond Club</span></label><label class="ct-chip"><input type="checkbox" value="Inner Circle"><span>Inner Circle</span></label><label class="ct-chip"><input type="checkbox" value="Azimi Marketing"><span>Azimi Marketing</span></label></div><input id="cs-int" class="ct-chips-val" required tabindex="-1" aria-hidden="true"></div>
-        <div class="f-row one"><label for="cs-bron">Hoe heb je ons gevonden? <i>*</i></label><select id="cs-bron" required><option value="">Kies een optie</option><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>Google</option><option>Podcast of tv</option><option>Via iemand die ik ken</option><option>Op een event</option><option>Anders</option></select></div>
-        <div class="f-row one"><label for="cs-vraag">Je vraag</label><textarea id="cs-vraag" rows="3"></textarea></div>
-        <p class="f-err" hidden>Vul alle velden met een * in. Controleer ook je e-mailadres.</p>
-        <button class="btn-dark wide" type="submit">Verstuur aanvraag</button>
-      </form>
-    </div>
-    <div class="bm-done" hidden>
-      <span class="lbl brown">Ontvangen</span>
-      <h2>Bedankt, we nemen contact op.</h2>
-      <p>Je hoort zo snel mogelijk persoonlijk van ons.</p>
-      <button class="btn-dark" type="button" data-close>Sluiten</button>
-    </div>
-  </div>
-</div>
+
 <script>
 (function(){var r=document.querySelector('.ct-chips-row');if(r){var v=r.querySelector('.ct-chips-val');r.addEventListener('change',function(){v.value=[].map.call(r.querySelectorAll('input[type=checkbox]:checked'),function(c){return c.value}).join(', ');v.classList.remove('bad');r.classList.remove('bad')})}})();
-(function(){if(/gesprek=1/.test(location.search)){var b=document.querySelector('[data-open="ct-sales"]');if(b)setTimeout(function(){b.click()},300)}})();
+(function(){if(/gesprek=1/.test(location.search)){setTimeout(function(){var a=document.getElementById('aanvraag');if(a)a.scrollIntoView({behavior:'smooth'})},300)}})();
 (function(){var f=document.getElementById('ct-form');document.getElementById('ct-mailto').href='mailto:'+(window.AZ_MAIL||'info@salar-azimi.nl');document.getElementById('ct-mailto').textContent=window.AZ_MAIL||'info@salar-azimi.nl';
   f.addEventListener('submit',function(e){e.preventDefault();var ok=true;f.querySelectorAll('[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));i.classList.toggle('bad',bad);if(bad)ok=false});f.querySelector('.f-err').hidden=ok;if(!ok)return;
     if(window.azSend)window.azSend(f,'Contactformulier');[].forEach.call(f.children,function(x){if(!x.classList.contains('ct-done'))x.hidden=true});f.querySelector('.ct-done').hidden=false})})();
