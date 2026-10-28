@@ -2559,3 +2559,70 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 .ct-wa h2{font-size:1.6rem!important}
 .ct-wa p{font-size:.92rem}
 @media(max-width:768px){.oo-card-in{padding:22px 20px}.oo-cards h3{font-size:26px}.ct-wa>div{padding:20px}}
+.menu{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:max-content;gap:1.6rem 3rem}
+.menu{min-width:0}
+
+/* ---- Netwerk Event v2: stats, reviews, pakketten, aanmelden ---- */
+.nw-stats{background:#0b0a08;border-block:1px solid rgba(223,185,110,.22)}
+.nw-stats-in{display:grid;grid-template-columns:repeat(4,1fr);max-width:112rem;margin:0 auto}
+.nw-stats-in>div{padding:3.2rem 1rem;text-align:center;border-right:1px solid rgba(244,238,227,.08);background:radial-gradient(ellipse at 20% 0%,rgba(150,112,45,.16),transparent 60%)}
+.nw-stats-in>div:last-child{border-right:0}
+.nw-stats b{display:block;font:800 clamp(2.6rem,4.6vw,4.4rem) var(--font);letter-spacing:-.04em;color:#dfb96e;line-height:1}
+.nw-stats span{display:block;margin-top:.9rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:rgba(244,238,227,.82)}
+.nw-r-h{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:.8rem;align-items:center}
+.nw-av{grid-row:1/3;width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:#16120a;color:#dfb96e;font-weight:700}
+.nw-r-h cite{font-size:.95rem}
+.nw-r p{margin-top:1rem}
+.nw-center{margin-left:auto;margin-right:auto;text-align:center}
+.nw-pk .nw-pgrid{align-items:stretch;gap:1.4rem;margin-top:3rem}
+.nw-pk .nw-p{position:relative;text-align:left;padding:3rem 2.4rem 2.4rem;border-radius:4px;background:linear-gradient(180deg,#14110c,#070605);border:1px solid rgba(223,185,110,.22);box-shadow:none}
+.nw-pk .nw-p>img{display:block;width:4.4rem;height:4.4rem;margin:0 auto}
+.nw-pk .nw-p h3{text-align:center;margin-top:1.4rem;font-size:2.1rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;padding-bottom:1.8rem;border-bottom:1px solid rgba(223,185,110,.22)}
+.nw-bronze h3{color:#d8b06c}.nw-silver h3{color:#f1f1f1}.nw-gold h3{color:#e7c77d}
+.nw-silver{background:linear-gradient(180deg,#121316,#060607)!important;border-color:rgba(255,255,255,.18)!important}
+.nw-gold{background:linear-gradient(180deg,#1b150c,#080604)!important;border-color:rgba(223,185,110,.45)!important}
+.nw-pk .nw-badge{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);white-space:nowrap;padding:.55rem 1.1rem;font-size:.62rem}
+.nw-silver .nw-badge{background:#ececec;color:#111}
+.nw-pk .nw-p ul{margin:1.6rem 0 2.2rem}
+.nw-pk .nw-p li{padding:.75rem 0 .75rem 2.1rem;font-size:.95rem}
+.nw-pk .nw-p li:before{left:0;top:.8rem;width:1.15rem;height:1.15rem;border:0;border-radius:50%;background:#dfb96e;transform:none;-webkit-mask:none}
+.nw-pk .nw-p li:after{content:"";position:absolute;left:.38rem;top:1.08rem;width:.38rem;height:.2rem;border-left:2px solid #16120a;border-bottom:2px solid #16120a;transform:rotate(-45deg)}
+.nw-silver li:before{background:#ececec!important}
+.nw-pk .nw-p .inc-btn{align-self:stretch;width:100%;justify-content:center;text-align:center}
+.nw-noimg{grid-template-columns:1fr!important;text-align:center}
+.nw-noimg>div{padding:3rem 2rem!important}
+.nw-noimg ul{list-style:none;padding:0!important;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:center}
+.nw-apply{background:#080705;color:#f4eee3;padding-block:6.5rem}
+.nw-apply-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:3rem;align-items:start}
+.nw-apply-l h2{font-size:clamp(2rem,3.4vw,3rem);line-height:1.1;font-weight:600}.nw-apply-l h2 b{color:#dfb96e;font-weight:600}
+.nw-apply-l>p{margin-top:1rem;opacity:.72;line-height:1.7;max-width:32rem}
+.nw-apply-card{margin-top:2rem;border:1px solid rgba(223,185,110,.22);border-radius:16px;padding:1.8rem;background:#0f0d0a;max-width:30rem}
+.nw-apply-card h3{font-size:1.3rem;margin-top:-.6rem}
+.nw-apply-card p{margin-top:.6rem;font-size:.9rem;opacity:.7;line-height:1.6}
+.nw-ok{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.2rem;font-weight:700;font-size:.88rem}
+.nw-ok i{display:grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:#dfb96e;color:#16120a;font-style:normal;font-size:.8rem}
+.nw-apply-r{background:#f6f3ec;color:var(--black);border-radius:20px;padding:1.8rem 1.8rem 1.6rem}
+.nw-apply-r .m-form{margin-top:12px;column-gap:12px;row-gap:10px}
+.nw-apply-r .nw-step{column-gap:12px;row-gap:10px}
+.nw-apply-r .f-row{gap:4px}.nw-apply-r .f-row label{font-size:12px}
+.nw-apply-r .f-row input,.nw-apply-r .f-row select{height:42px;font-size:14px;border-radius:8px}
+.nw-apply-r .f-row textarea{min-height:58px;font-size:14px;border-radius:8px}
+.nw-apply-r .btn-dark.wide{height:46px;line-height:46px;font-size:12px;border-radius:8px;margin-top:4px}
+.nw-apply-r .nw-backbtn{height:46px;border-radius:8px;margin-top:4px}
+.nw-apply-r .nw-steps{margin:0;opacity:1}
+.nw-phase{grid-column:1/-1;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#9a7035;margin:0}
+.nw-phase span{color:#999}
+@media(max-width:900px){.nw-stats-in{grid-template-columns:repeat(2,1fr)}.nw-stats-in>div:nth-child(2){border-right:0}.nw-stats-in>div{border-bottom:1px solid rgba(244,238,227,.08);padding:28px 10px}.nw-apply-grid{grid-template-columns:1fr}.nw-apply{padding-block:56px}}
+@media(max-width:768px){.nw-apply-r .f-row input,.nw-apply-r .f-row select{height:46px;font-size:16px}.nw-apply-r .f-row textarea{font-size:16px}.nw-pk .nw-p{padding:34px 22px 24px}.nw-pk .nw-pgrid{gap:34px}}
+.nw-apply-card h3{margin-top:0}
+.nw-apply-card .px-eyebrow{margin-bottom:.6rem}
+.nw-rgrid{grid-template-columns:repeat(3,1fr)}
+.nw-r{margin:0;padding:1.6rem 1.7rem;border:1px solid #ebe3d4}
+.nw-r-h{grid-template-columns:auto 1fr auto;grid-template-rows:auto}
+.nw-av{grid-row:auto}
+.nw-r-h .nw-stars svg{width:14px;height:14px}
+.nw-r p{font-size:.95rem;line-height:1.65;color:#333}
+.nw-rev-top{background:#fff;border:1px solid #ebe3d4;border-radius:99px;padding:.7rem 1.2rem;display:inline-flex}
+.nw-rev-top strong{font-size:1.1rem}
+@media(max-width:1000px){.nw-rgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nw-rgrid{grid-template-columns:1fr}}

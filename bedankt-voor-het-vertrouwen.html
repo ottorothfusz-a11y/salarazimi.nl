@@ -102,8 +102,9 @@
   P.addEventListener('click',function(e){if(e.target===P||e.target.closest('.inc-player-x'))closeP()});
   // formulier
   var M=document.getElementById('fn-modal');
-  function openM(){M.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){M.querySelector('input').focus()},50)}
-  function closeM(){M.hidden=true;document.body.style.overflow=''}
+  var INL=M&&M.classList.contains('fn-inline');
+  function openM(){if(INL){M.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){M.querySelector('input').focus({preventScroll:true})},700);return}M.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){M.querySelector('input').focus()},50)}
+  function closeM(){if(INL)return;M.hidden=true;document.body.style.overflow=''}
   document.querySelectorAll('[data-open="fn-modal"]').forEach(function(x){x.addEventListener('click',openM)});
   if(M){M.addEventListener('click',function(e){if(e.target===M||e.target.closest('[data-close]'))closeM()});
     var f=M.querySelector('form');f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
