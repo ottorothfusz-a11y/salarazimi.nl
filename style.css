@@ -2738,6 +2738,7 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 /* tablet + mobiel: klein rond radartje */
 @media(max-width:999px){
   .minimap{width:58px;height:58px;border-radius:50%;right:12px;bottom:84px;border-width:1.5px}
+  .minimap[hidden]{display:none}
   .minimap:hover{transform:none}
   .mm-top,.mm-bar,.mm-n{display:none}
   .mm-grid{background-size:12px 12px;box-shadow:inset 0 0 14px 4px rgba(5,5,8,.9)}
