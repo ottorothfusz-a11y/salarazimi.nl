@@ -223,6 +223,31 @@
   tick();setInterval(tick,30000);b.hidden=false;document.body.classList.add('has-lb');
 })();
 </script>
+
+<a class="minimap" id="minimap" href="/wereldkaart" aria-label="Open de wereldkaart met alle events en incentives" hidden>
+  <span class="mm-view"><img class="mm-map" src="/wk-map.jpg" alt="" loading="lazy"><span class="mm-grid"></span><span class="mm-sweep"></span><span class="mm-pins" id="mm-pins"></span></span>
+  <span class="mm-top"><i></i>Global ops</span>
+  <span class="mm-n">N</span>
+  <span class="mm-bar"><b id="mm-count">Wereldkaart</b><span>Open kaart <i>→</i></span></span>
+</a>
+<script>
+(function(){
+  var a=document.getElementById('minimap');if(!a||/wereldkaart/.test(location.pathname))return;
+  var K=344.490488147505,TX=1000,TY=500,R=Math.PI/180;
+  function fw(lon,lat){var l=(lon-10)*R,p=lat*R,p2=p*p,p4=p2*p2;return [TX+K*l*(0.8707-0.131979*p2+p4*(-0.013791+p4*(0.003971*p2-0.001529*p4))),TY-K*p*(1.007226+p2*(0.015085+p4*(-0.044475+0.028874*p2-0.005916*p4)))]}
+  // Bestemmingen op de minimap. Pas aan bij nieuwe edities (zelfde als de wereldkaart).
+  var P=[{n:'Marrakech',lon:-7.98,lat:31.63,d:'2026-11-16',hot:1},{n:'Istanbul',lon:28.98,lat:41.01,d:'2026-11-23'},{n:'Noorwegen',lon:9.65,lat:60.39,d:'2026-12-14'},{n:'Marrakech',lon:-7.98,lat:31.63,d:'2027-01-25'}];
+  var now=new Date(),seen={},live=P.filter(function(x){if(new Date(x.d+'T23:59:59')<now||seen[x.n])return false;return seen[x.n]=1});
+  var hq=fw(3.5,51.3);
+  function draw(){var mob=matchMedia('(max-width:999px)').matches,W=mob?380:540,c=mob?fw(5,44):fw(11,43),x0=c[0]-W/2,y0=c[1]-W/2;
+    var img=a.querySelector('.mm-map');img.style.width=(2000/W*100)+'%';img.style.left=(-x0/W*100)+'%';img.style.top=(-y0/W*100)+'%';
+    var pins=document.getElementById('mm-pins'),h='';
+    live.forEach(function(m){var q=fw(m.lon,m.lat);h+='<i class="mm-pin'+(m.hot?' hot':'')+'" style="left:'+((q[0]-x0)/W*100)+'%;top:'+((q[1]-y0)/W*100)+'%"></i>'});
+    h+='<i class="mm-me" style="left:'+((hq[0]-x0)/W*100)+'%;top:'+((hq[1]-y0)/W*100)+'%"></i>';pins.innerHTML=h}
+  document.getElementById('mm-count').textContent=live.length+' live';
+  draw();addEventListener('resize',draw);a.hidden=false;
+})();
+</script>
 <div class="incpop" id="incpop" hidden>
   <div class="incpop-box" role="dialog" aria-modal="true" aria-labelledby="incpop-t">
     <button class="incpop-x" type="button" aria-label="Sluiten">×</button>
