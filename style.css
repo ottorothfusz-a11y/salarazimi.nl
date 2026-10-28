@@ -2682,3 +2682,9 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 @media(max-width:900px){.nw-testis .nw-tgrid{grid-auto-columns:calc((100% - 1rem)/2)}}
 @media(max-width:600px){.nw-testis .nw-tgrid{grid-auto-columns:82%}.nw-tnav{justify-content:center}}
 .nw-testis .nw-cta{text-align:center}
+/* Netwerk hero: staande video van Salar */
+.nw-vert .inc-film{aspect-ratio:9/16;max-width:380px;border-radius:20px}
+.nw-vert .inc-film video{object-fit:cover}
+.nw-sum .nw-head{margin-left:auto;margin-right:auto;text-align:center}
+.nw-sum-v{max-width:1000px;margin:0 auto}
+@media(max-width:600px){.nw-vert .inc-film{max-width:78vw}}
