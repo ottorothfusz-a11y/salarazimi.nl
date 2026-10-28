@@ -44,33 +44,55 @@
   <a href="/contact" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
 </div>
 
-<section class="hero page-hero cr-hero">
-  <img class="poster" src="/incentives.jpg" alt="Salar Azimi aan tafel met zijn team" style="object-position:center 30%">
-  <div class="in">
-    <span class="lbl">Careers</span>
-    <h1>Careers</h1>
-    <p class="sub">Word onderdeel van een ondernemende omgeving waar ambitie, verantwoordelijkheid en groei centraal staan. Bekijk de openstaande vacatures en ontdek waar jouw kracht het verschil kan maken.</p>
-    <a class="btn-gold cr-btn" href="#careers-vacatures">Bekijk vacatures <span>↓</span></a>
+<section class="cr2-hero">
+  <div class="cr2-photo"><img src="/incentives.jpg" alt="Salar Azimi aan tafel met zijn team"></div>
+  <div class="cr2-in">
+    <span class="cr2-eye">Careers</span>
+    <h1>Bouw mee aan <b>de wereld van Azimi.</b></h1>
+    <p>Hotels, vastgoed, events en eigen merken. Wij zoeken mensen met ambitie, die verantwoordelijkheid nemen en willen groeien.</p>
+    <div class="cr2-status"><i></i><span><b>Geen open vacatures</b> · open sollicitatie mogelijk</span></div>
+    <a class="btn-gold cr2-btn" href="#careers-vacatures">Bekijk vacatures <span>↓</span></a>
   </div>
 </section>
 
-<section class="cr-sec" id="careers-vacatures">
-  <div class="cr-in">
-    <div class="cr-head">
-      <div>
-        <span class="lbl cr-lbl">Careers</span>
-        <h2>Openstaande vacatures</h2>
-      </div>
+<section class="cr2-sec" id="careers-vacatures">
+  <div class="cr2-wrap">
+    <div class="cr2-left">
+      <span class="cr2-eye">Vacatures</span>
+      <h2>Op dit moment <b>geen openstaande vacatures.</b></h2>
+      <p>Nieuwe functies plaatsen we hier zodra ze er zijn. Zie jij jezelf al bij ons werken? Stuur dan een open sollicitatie. We bewaren elke serieuze reactie en nemen contact op zodra er een plek is die bij je past.</p>
+      <ul class="cr2-why">
+        <li><b>01</b><div><h3>Werk dicht bij Salar</h3><p>Korte lijnen, snelle beslissingen en direct leren van een ondernemer die alles zelf heeft opgebouwd.</p></div></li>
+        <li><b>02</b><div><h3>Een heel ecosysteem</h3><p>Van hotels en vastgoed tot events in Marrakech. Elke dag is anders.</p></div></li>
+        <li><b>03</b><div><h3>Ruimte om te groeien</h3><p>Wie verantwoordelijkheid pakt, krijgt meer. Zo simpel is het.</p></div></li>
+      </ul>
     </div>
-    <div class="cr-empty">
-      <span class="cr-dot" aria-hidden="true"></span>
-      <div>
-        <h3>Op dit moment zijn er geen openstaande vacatures.</h3>
-        <p>Zodra er een nieuwe functie beschikbaar komt, plaatsen we die hier.</p>
+    <form class="cr2-form" id="cr2-form" novalidate data-mail="info@salar-azimi.nl">
+      <div class="cr2-form-h"><span class="cr2-eye">Open sollicitatie</span><h3>Stel jezelf voor.</h3></div>
+      <div class="cr2-row"><label for="cr-naam">Naam *</label><input id="cr-naam" required autocomplete="name"></div>
+      <div class="cr2-2">
+        <div class="cr2-row"><label for="cr-mail">E-mail *</label><input id="cr-mail" type="email" required autocomplete="email"></div>
+        <div class="cr2-row"><label for="cr-tel">Telefoon *</label><input id="cr-tel" type="tel" required autocomplete="tel"></div>
       </div>
-    </div>
+      <div class="cr2-row"><label for="cr-rol">Interesse in *</label><select id="cr-rol" required><option value="">Kies een richting</option><option>Sales</option><option>Events &amp; hospitality</option><option>Marketing &amp; content</option><option>Vastgoed</option><option>Operations &amp; management</option><option>Iets anders</option></select></div>
+      <div class="cr2-row"><label for="cr-link">LinkedIn of cv-link</label><input id="cr-link" type="url" placeholder="https://"></div>
+      <div class="cr2-row"><label for="cr-mot">Waarom wil je bij ons werken?</label><textarea id="cr-mot" rows="4"></textarea></div>
+      <p class="f-err" hidden>Vul de verplichte velden in.</p>
+      <button class="btn-gold cr2-send" type="submit">Verstuur sollicitatie <span>→</span></button>
+      <div class="cr2-done" hidden><span>✓</span><h3>Bedankt, we hebben je sollicitatie.</h3><p>We nemen contact met je op zodra er een passende plek is.</p></div>
+    </form>
   </div>
 </section>
+<script>
+(function(){
+  var f=document.getElementById('cr2-form');if(!f)return;
+  f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
+    f.querySelectorAll('[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));i.classList.toggle('bad',bad);if(bad)ok=false});
+    f.querySelector('.f-err').hidden=ok;if(!ok)return;
+    if(window.azSend)window.azSend(f,'Open sollicitatie');
+    [].forEach.call(f.children,function(c){if(!c.classList.contains('cr2-done'))c.hidden=true});f.querySelector('.cr2-done').hidden=false});
+})();
+</script>
 <footer class="ftr">
   <div class="top">
     <div class="brand">
