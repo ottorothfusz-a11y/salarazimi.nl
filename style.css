@@ -2650,3 +2650,5 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 .pf-media img[src*="pf-wijn"]{object-fit:cover;object-position:center;transform:scale(1.55)!important}
 .pf-frames:has(img:nth-child(2):last-child){grid-template-columns:1fr 1fr;grid-template-rows:1fr}
 .pf-frames:has(img:nth-child(2):last-child) img:first-child{grid-row:auto}
+.pf-media.blurred img{filter:blur(14px) brightness(.75) saturate(.8)!important;transform:scale(1.15)!important}
+.pf-media.blurred:before{content:"In aanbouw";position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);padding:.6rem 1.1rem;border:1px solid rgba(223,185,110,.6);border-radius:99px;background:rgba(10,8,6,.55);color:#dfb96e;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
