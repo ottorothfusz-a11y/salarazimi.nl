@@ -1,0 +1,46 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/oplossingen",
+      "destination": "/events",
+      "permanent": true
+    },
+    {
+      "source": "/vastgoed-masterclass",
+      "destination": "/vastgoed",
+      "permanent": true
+    },
+    {
+      "source": "/strategische-mastermind/bedankt",
+      "destination": "/bedankt-voor-het-vertrouwen",
+      "permanent": true
+    },
+    {
+      "source": "/strategische-mastermind-bedankt",
+      "destination": "/bedankt-voor-het-vertrouwen",
+      "permanent": true
+    },
+    {
+      "source": "/speaking",
+      "destination": "/speaking-request",
+      "permanent": true
+    },
+    {
+      "source": "/azimi-netwerk-event/bedankt",
+      "destination": "/azimi-netwerk-event-bedankt",
+      "permanent": true
+    },
+    {
+      "source": "/roxanne",
+      "destination": "/over-ons",
+      "permanent": true
+    },
+    {
+      "source": "/azimi-netwerk-events",
+      "destination": "/azimi-netwerk-event",
+      "permanent": true
+    }
+  ]
+}
