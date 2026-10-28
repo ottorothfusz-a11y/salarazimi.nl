@@ -2660,3 +2660,25 @@ button.ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-sh
 .modal.ct-inline .modal-box h2{font-size:30px}
 @media(max-width:768px){.modal.ct-inline{padding:0 12px 48px}.modal.ct-inline .modal-box{padding:28px 18px 22px}.modal.ct-inline .modal-box h2{font-size:24px}}
 .ct-wa-btn{background:var(--gold)!important;color:#16120a!important;box-shadow:none!important}
+.nw-e img{object-position:center 12%}
+.nw-e:nth-child(4) img{object-position:center 60%}
+.nw-tgrid{grid-template-columns:repeat(3,1fr);gap:1rem}
+.nw-tc{aspect-ratio:16/9;border-radius:14px}
+@media(max-width:900px){.nw-tgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.nw-tgrid{grid-template-columns:1fr}}
+/* testimonials als carrousel, zoals oude pagina */
+.nw-testis .nw-head h2{font-size:clamp(2.4rem,5vw,4.4rem);font-weight:800;letter-spacing:-.04em;line-height:1}
+.nw-testis .nw-head h2 b{color:inherit}
+.nw-testis .nw-head p{font-size:1.1rem}
+.nw-tnav{display:flex;justify-content:flex-end;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.nw-tcount{font-weight:700;font-size:.9rem;letter-spacing:.06em;margin-right:1rem}.nw-tcount i{font-style:normal}
+.nw-tnav button{width:3.4rem;height:3.4rem;border-radius:50%;border:1px solid rgba(0,0,0,.08);background:#fff;font-size:1.3rem;cursor:pointer;box-shadow:0 6px 18px rgba(60,40,10,.08)}
+.nw-testis .nw-tgrid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:calc((100% - 2rem)/3);gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.nw-testis .nw-tgrid::-webkit-scrollbar{display:none}
+.nw-testis .nw-tc{aspect-ratio:4/5;border-radius:4px;border:1px solid rgba(0,0,0,.35);scroll-snap-align:start}
+.nw-testis .nw-tc video{object-fit:cover;object-position:center 30%}
+.nw-testis .ty-play{width:72px;height:72px;margin:-36px 0 0 -36px;background:rgba(15,13,10,.82);box-shadow:0 0 0 2px rgba(255,255,255,.15)}
+.nw-testis .ty-play svg{fill:#fff;width:26px;height:26px}
+@media(max-width:900px){.nw-testis .nw-tgrid{grid-auto-columns:calc((100% - 1rem)/2)}}
+@media(max-width:600px){.nw-testis .nw-tgrid{grid-auto-columns:82%}.nw-tnav{justify-content:center}}
+.nw-testis .nw-cta{text-align:center}
