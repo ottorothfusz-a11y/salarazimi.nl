@@ -23,7 +23,7 @@
     <p class="fn-sub">Je afspraak staat in de agenda. Bekijk de video hieronder vóór je gesprek, zodat we tijdens de call direct naar jouw situatie kunnen.</p>
     <div class="ty-main">
       <div class="ty-main-h"><b>Belangrijk vóór je gesprek</b><span>Bekijk deze video volledig voordat je de call ingaat.</span></div>
-      <div class="ty-v" data-v="ty-voorbereiding"><video controls playsinline preload="metadata" poster="/sal-hero.jpg"><source src="/ty-voorbereiding.mp4" type="video/mp4"></video></div>
+      <div class="ty-v ty-v-vert" data-v="ty-voorbereiding"><video controls playsinline preload="metadata" poster="/mm-hero.jpg"><source src="/mm-hero.mp4" type="video/mp4"></video></div>
     </div>
   </div>
 </section>
@@ -84,14 +84,66 @@
 </div>
 
 <footer class="fn-foot"><span>© 2026 Salar Azimi</span><a href="/">Naar salar-azimi.nl</a></footer>
+<script>
+(function(){
+  // Calendly-agenda's: laden pas als ze in beeld komen (ook in pop-ups)
+  var els=[].slice.call(document.querySelectorAll('.cal-embed'));if(!els.length)return;
+  var loading=null;
+  function lib(){if(window.Calendly)return Promise.resolve();if(loading)return loading;
+    loading=new Promise(function(ok,no){var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;s.onload=ok;s.onerror=no;document.head.appendChild(s)});return loading}
+  function init(el){if(el._cal)return;el._cal=1;var u=el.dataset.cal,q='hide_gdpr_banner=1'+(el.dataset.theme==='dark'?'&background_color=0b0a08&text_color=f4eee3&primary_color=d9ba79':'&primary_color=9a7035');
+    lib().then(function(){Calendly.initInlineWidget({url:u+(u.indexOf('?')>-1?'&':'?')+q,parentElement:el,resize:true});var fb=el.parentNode.querySelector('.cal-fallback');if(fb)fb.classList.add('ok')})
+      .catch(function(){el._cal=0;el.classList.add('cal-failed');el.innerHTML='<a class="cal-open" href="'+u+'" target="_blank" rel="noopener">Open de agenda en plan je call →</a>'})}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){init(e.target);io.unobserve(e.target)}})},{rootMargin:'400px 0px'});els.forEach(function(el){io.observe(el)})}
+  else els.forEach(init);
+  // pop-up geopend: agenda direct laden
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;var m=document.getElementById(b.getAttribute('data-open'));if(m)setTimeout(function(){m.querySelectorAll('.cal-embed').forEach(init)},30)});
+})();
+</script>
+<script>
+(function(){
+  // ===== TRACKING (Meta, TikTok, Google) =====
+  // Vul hier de ID's in. Leeg = niets wordt geladen en er verschijnt ook geen cookiemelding.
+  var T={meta:'',tiktok:'',ga4:''}; // bijv. meta:'123456789012345', tiktok:'C1ABCDEF...', ga4:'G-XXXXXXX'
+  var on=false;
+  window.azTrack=function(ev){if(!on)return;try{
+    if(window.fbq)fbq('track',ev==='Schedule'?'Schedule':'Lead');
+    if(window.ttq)ttq.track(ev==='Schedule'?'Schedule':'SubmitForm');
+    if(window.gtag)gtag('event',ev==='Schedule'?'schedule_call':'generate_lead');}catch(e){}};
+  // geboekte call in Calendly = conversie
+  addEventListener('message',function(e){if(e.data&&e.data.event==='calendly.event_scheduled'&&window.azTrack)azTrack('Schedule')});
+  if(!T.meta&&!T.tiktok&&!T.ga4)return;
+  function load(){if(on)return;on=true;
+    if(T.meta){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',T.meta);fbq('track','PageView')}
+    if(T.tiktok){!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(T.tiktok);ttq.page()}(window,document,'ttq')}
+    if(T.ga4){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+T.ga4;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',T.ga4)}
+  }
+  var c=null;try{c=localStorage.getItem('az-consent')}catch(e){}
+  if(c==='ja'){load();return}if(c==='nee')return;
+  // cookiemelding
+  var b=document.createElement('div');b.className='az-ck';b.setAttribute('role','dialog');b.setAttribute('aria-label','Cookies');
+  b.innerHTML='<p>We gebruiken cookies om de website te verbeteren en je relevante advertenties te tonen.</p><div><button type="button" data-c="nee">Alleen noodzakelijk</button><button type="button" data-c="ja" class="ok">Accepteren</button></div>';
+  b.addEventListener('click',function(e){var x=e.target.closest('[data-c]');if(!x)return;try{localStorage.setItem('az-consent',x.dataset.c)}catch(err){}if(x.dataset.c==='ja')load();b.remove()});
+  (document.body?Promise.resolve():new Promise(function(r){addEventListener('DOMContentLoaded',r)})).then(function(){document.body.appendChild(b)});
+})();
+</script>
 <a id="fn-thanks" href="/bedankt-voor-het-vertrouwen" hidden>Bedankt</a>
 <script>
 (function(){
-  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
-  window.AZ_MAIL='info@salar-azimi.nl';
-  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
-    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?l.textContent.replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
-    return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
+  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit). LET OP: de eerste inzending stuurt een activatiemail naar dit adres; klik die aan, anders komt er niets binnen.
+  window.AZ_MAIL='alexander@salarazimi.nl';
+  window.AZ_CC='marketing@salarazimi.nl'; // krijgt van elke aanvraag een kopie
+  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',_captcha:'false',Pagina:location.href},grp={};if(window.AZ_CC)d._cc=window.AZ_CC;
+    f.querySelectorAll('input,select,textarea').forEach(function(i){if(i.type==='submit'||i.type==='button')return;
+      if(i.type==='checkbox'||i.type==='radio'){if(!i.checked)return;var row=i.closest('.f-row'),lb=row&&row.querySelector('label');var g=lb?lb.childNodes[0].textContent.split('*').join('').trim():(i.name||'Keuze');(grp[g]=grp[g]||[]).push(i.value||'ja');return}
+      if(!i.value)return;var l=f.querySelector('label[for="'+i.id+'"]');var k=l?(l.childNodes[0].textContent||l.textContent).split('*').join('').trim():(i.name||i.id||'veld');d[k]=i.value});
+    for(var g in grp){if(!d[g])d[g]=grp[g].join(', ')}
+    var to=f.getAttribute('data-mail')||window.AZ_MAIL;
+    return fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw j;if(window.azTrack)azTrack('Lead');return j})})
+      .catch(function(){window.azFail(to)})}catch(e){window.azFail(window.AZ_MAIL);return Promise.resolve()}};
+  window.azFail=function(to){var b=document.getElementById('az-fail');if(!b){b=document.createElement('div');b.id='az-fail';b.setAttribute('role','alert');document.body.appendChild(b)}
+    b.innerHTML='<p><b>Je bericht is niet verstuurd.</b> Mail ons direct op <a href="mailto:'+to+'">'+to+'</a>, dan reageren we zo snel mogelijk.</p><button type="button" aria-label="Sluiten">×</button>';b.querySelector('button').onclick=function(){b.classList.remove('on')};b.classList.add('on')};
   // geluid op de hoofdvideo
   var v=document.getElementById('fn-vid'),b=document.getElementById('fn-sound');
   if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan';var hs=v.closest('.fn-hasbg');if(hs)hs.classList.toggle('fn-focus',!v.muted)});
@@ -104,11 +156,11 @@
   // formulier
   var M=document.getElementById('fn-modal');
   var INL=M&&M.classList.contains('fn-inline');
-  function openM(){if(INL){M.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){M.querySelector('input').focus({preventScroll:true})},700);return}M.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){M.querySelector('input').focus()},50)}
+  function openM(){if(INL){M.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){var i=M.querySelector('input');if(i)i.focus({preventScroll:true})},700);return}M.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){var i=M.querySelector('input');if(i)i.focus()},50)}
   function closeM(){if(INL)return;M.hidden=true;document.body.style.overflow=''}
   document.querySelectorAll('[data-open="fn-modal"]').forEach(function(x){x.addEventListener('click',openM)});
   if(M){M.addEventListener('click',function(e){if(e.target===M||e.target.closest('[data-close]'))closeM()});
-    var f=M.querySelector('form');f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
+    var f=M.querySelector('form');if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
       f.querySelectorAll('input[required],select[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));i.classList.toggle('bad',bad);if(bad)ok=false});
       f.querySelector('.f-err').hidden=ok;if(!ok)return;
       var sent=azSend(f,document.getElementById('fn-mt').textContent)||Promise.resolve();f.querySelector('button[type=submit]').disabled=true;
@@ -116,7 +168,7 @@
       var go=function(){location.href=document.getElementById('fn-thanks').getAttribute('href')+'?aanvraag=1'};Promise.race([sent,new Promise(function(r){setTimeout(r,1500)})]).then(go,go)})}
   document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(M&&!M.hidden)closeM();if(!P.hidden)closeP()});
   // naam op bedankpagina
-  var n=document.getElementById('fn-name');if(n){try{var x=sessionStorage.getItem('fn-naam');if(x)n.textContent=(n.dataset.pre||' ')+x}catch(err){}}
+  var n=document.getElementById('fn-name');if(n){try{var qp=new URLSearchParams(location.search),x=qp.get('invitee_first_name')||(qp.get('invitee_full_name')||'').split(' ')[0]||sessionStorage.getItem('fn-naam');if(x)n.textContent=(n.dataset.pre||' ')+x}catch(err){}}
   // reveal
   var els=[].slice.call(document.querySelectorAll('.rv'));if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('rv-on');
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});els.forEach(function(el){io.observe(el)});setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},4000)}

@@ -153,21 +153,13 @@
 </section>
 
 <div class="modal" id="dm-modal" hidden>
-  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="dmm-title">
+  <div class="modal-box ev-cal" role="dialog" aria-modal="true" aria-labelledby="dmm-title">
     <button class="modal-x" type="button" data-close aria-label="Sluiten">×</button>
     <div class="bm-form">
       <span class="lbl brown">Lidmaatschap aanvragen</span>
       <h2 id="dmm-title">Diamond Club</h2>
       <div class="bm-product"><span id="dmm-sub">Jaarlidmaatschap · persoonlijk contact, investeren, netwerk</span><b id="dmm-price">€20.000</b></div>
-      <form class="m-form" novalidate>
-        <div class="f-row"><label for="dm-vn">Voornaam <i>*</i></label><input id="dm-vn" autocomplete="given-name" required></div>
-        <div class="f-row"><label for="dm-an">Achternaam <i>*</i></label><input id="dm-an" autocomplete="family-name" required></div>
-        <div class="f-row"><label for="dm-mail">E-mail <i>*</i></label><input id="dm-mail" type="email" autocomplete="email" required></div>
-        <div class="f-row"><label for="dm-tel">Telefoon <i>*</i></label><input id="dm-tel" type="tel" autocomplete="tel" required></div>
-        <div class="f-row one"><label for="dm-bedrijf">Bedrijfsnaam <i>*</i></label><input id="dm-bedrijf" autocomplete="organization" required></div>
-        <p class="f-err" hidden>Vul alle velden met een * in. Controleer ook je e-mailadres.</p>
-        <button class="btn-dark wide" type="submit">Aanvraag versturen</button>
-      </form>
+      <p class="cal-intro">Kies direct een moment voor een kort gesprek. De paar vragen beantwoord je meteen in de agenda.</p><div class="cal-wrap"><div class="cal-embed" data-cal="https://calendly.com/alexander-salarazimi/15min" data-theme="light"></div><a class="cal-fallback" href="https://calendly.com/alexander-salarazimi/15min" target="_blank" rel="noopener noreferrer">Agenda laadt niet? Open hem in een nieuw venster →</a></div>
     </div>
     <div class="bm-done" hidden>
       <span class="lbl brown">Ontvangen</span>
@@ -289,7 +281,7 @@
       <p>Strategie, 1-op-1 momenten en een netwerk dat blijft. All inclusive, beperkt aantal plekken.</p>
       <div class="incpop-btns">
         <a class="incpop-main" href="/strategische-mastermind">Meld je aan <span>→</span></a>
-        <a class="incpop-dm" id="incpop-dm" href="/contact?gesprek=1"><span>Plan een gesprek</span></a>
+        <a class="incpop-dm" id="incpop-dm" href="https://calendly.com/alexander-salarazimi/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
       </div>
       <span class="incpop-price">€4.995 ex. btw</span>
     </div>
@@ -308,11 +300,20 @@
   });
 
 
-  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
-  window.AZ_MAIL='info@salar-azimi.nl';
-  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
-    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit'||i.type==='checkbox'||i.type==='radio')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?(l.childNodes[0].textContent||l.textContent).replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
-    return fetch('https://formsubmit.co/ajax/'+(f.getAttribute('data-mail')||window.AZ_MAIL),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
+  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit). LET OP: de eerste inzending stuurt een activatiemail naar dit adres; klik die aan, anders komt er niets binnen.
+  window.AZ_MAIL='alexander@salarazimi.nl';
+  window.AZ_CC='marketing@salarazimi.nl'; // krijgt van elke aanvraag een kopie
+  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',_captcha:'false',Pagina:location.href},grp={};if(window.AZ_CC)d._cc=window.AZ_CC;
+    f.querySelectorAll('input,select,textarea').forEach(function(i){if(i.type==='submit'||i.type==='button')return;
+      if(i.type==='checkbox'||i.type==='radio'){if(!i.checked)return;var row=i.closest('.f-row'),lb=row&&row.querySelector('label');var g=lb?lb.childNodes[0].textContent.split('*').join('').trim():(i.name||'Keuze');(grp[g]=grp[g]||[]).push(i.value||'ja');return}
+      if(!i.value)return;var l=f.querySelector('label[for="'+i.id+'"]');var k=l?(l.childNodes[0].textContent||l.textContent).split('*').join('').trim():(i.name||i.id||'veld');d[k]=i.value});
+    for(var g in grp){if(!d[g])d[g]=grp[g].join(', ')}
+    var to=f.getAttribute('data-mail')||window.AZ_MAIL;
+    return fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw j;if(window.azTrack)azTrack('Lead');return j})})
+      .catch(function(){window.azFail(to)})}catch(e){window.azFail(window.AZ_MAIL);return Promise.resolve()}};
+  window.azFail=function(to){var b=document.getElementById('az-fail');if(!b){b=document.createElement('div');b.id='az-fail';b.setAttribute('role','alert');document.body.appendChild(b)}
+    b.innerHTML='<p><b>Je bericht is niet verstuurd.</b> Mail ons direct op <a href="mailto:'+to+'">'+to+'</a>, dan reageren we zo snel mogelijk.</p><button type="button" aria-label="Sluiten">×</button>';b.querySelector('button').onclick=function(){b.classList.remove('on')};b.classList.add('on')};
   // Formulieren in pop-ups (boek, masterclass)
   function openM(m){m.hidden=false;document.body.style.overflow='hidden';var i=m.querySelector('input');if(i)setTimeout(function(){i.focus()},50)}
   function closeM(m){m.hidden=true;document.body.style.overflow=''}
@@ -349,6 +350,49 @@
   var m=document.getElementById('mnav');
   document.getElementById('burger').onclick=function(){m.classList.add('open')};
   document.getElementById('mclose').onclick=function(){m.classList.remove('open')};
+})();
+</script>
+<script>
+(function(){
+  // Calendly-agenda's: laden pas als ze in beeld komen (ook in pop-ups)
+  var els=[].slice.call(document.querySelectorAll('.cal-embed'));if(!els.length)return;
+  var loading=null;
+  function lib(){if(window.Calendly)return Promise.resolve();if(loading)return loading;
+    loading=new Promise(function(ok,no){var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;s.onload=ok;s.onerror=no;document.head.appendChild(s)});return loading}
+  function init(el){if(el._cal)return;el._cal=1;var u=el.dataset.cal,q='hide_gdpr_banner=1'+(el.dataset.theme==='dark'?'&background_color=0b0a08&text_color=f4eee3&primary_color=d9ba79':'&primary_color=9a7035');
+    lib().then(function(){Calendly.initInlineWidget({url:u+(u.indexOf('?')>-1?'&':'?')+q,parentElement:el,resize:true});var fb=el.parentNode.querySelector('.cal-fallback');if(fb)fb.classList.add('ok')})
+      .catch(function(){el._cal=0;el.classList.add('cal-failed');el.innerHTML='<a class="cal-open" href="'+u+'" target="_blank" rel="noopener">Open de agenda en plan je call →</a>'})}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){init(e.target);io.unobserve(e.target)}})},{rootMargin:'400px 0px'});els.forEach(function(el){io.observe(el)})}
+  else els.forEach(init);
+  // pop-up geopend: agenda direct laden
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;var m=document.getElementById(b.getAttribute('data-open'));if(m)setTimeout(function(){m.querySelectorAll('.cal-embed').forEach(init)},30)});
+})();
+</script>
+<script>
+(function(){
+  // ===== TRACKING (Meta, TikTok, Google) =====
+  // Vul hier de ID's in. Leeg = niets wordt geladen en er verschijnt ook geen cookiemelding.
+  var T={meta:'',tiktok:'',ga4:''}; // bijv. meta:'123456789012345', tiktok:'C1ABCDEF...', ga4:'G-XXXXXXX'
+  var on=false;
+  window.azTrack=function(ev){if(!on)return;try{
+    if(window.fbq)fbq('track',ev==='Schedule'?'Schedule':'Lead');
+    if(window.ttq)ttq.track(ev==='Schedule'?'Schedule':'SubmitForm');
+    if(window.gtag)gtag('event',ev==='Schedule'?'schedule_call':'generate_lead');}catch(e){}};
+  // geboekte call in Calendly = conversie
+  addEventListener('message',function(e){if(e.data&&e.data.event==='calendly.event_scheduled'&&window.azTrack)azTrack('Schedule')});
+  if(!T.meta&&!T.tiktok&&!T.ga4)return;
+  function load(){if(on)return;on=true;
+    if(T.meta){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',T.meta);fbq('track','PageView')}
+    if(T.tiktok){!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(T.tiktok);ttq.page()}(window,document,'ttq')}
+    if(T.ga4){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+T.ga4;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',T.ga4)}
+  }
+  var c=null;try{c=localStorage.getItem('az-consent')}catch(e){}
+  if(c==='ja'){load();return}if(c==='nee')return;
+  // cookiemelding
+  var b=document.createElement('div');b.className='az-ck';b.setAttribute('role','dialog');b.setAttribute('aria-label','Cookies');
+  b.innerHTML='<p>We gebruiken cookies om de website te verbeteren en je relevante advertenties te tonen.</p><div><button type="button" data-c="nee">Alleen noodzakelijk</button><button type="button" data-c="ja" class="ok">Accepteren</button></div>';
+  b.addEventListener('click',function(e){var x=e.target.closest('[data-c]');if(!x)return;try{localStorage.setItem('az-consent',x.dataset.c)}catch(err){}if(x.dataset.c==='ja')load();b.remove()});
+  (document.body?Promise.resolve():new Promise(function(r){addEventListener('DOMContentLoaded',r)})).then(function(){document.body.appendChild(b)});
 })();
 </script>
 </body>

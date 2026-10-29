@@ -10,52 +10,19 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header class="hdr" id="hdr">
-  <a class="logo" href="/"><img src="/logo-header.webp" alt="Salar Azimi"></a>
-  <nav class="nav">
-    <a href="/">Home</a>
-    <div class="dd"><a href="/events">Oplossingen<span class="chev">⌄</span></a>
-      <div class="menu">
-        <div><h5>Events</h5><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/strategische-mastermind">Strategy Mastermind</a><a href="/vastgoed">Vastgoed Masterclass</a></div>
-        <div><h5>Coaching</h5><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a></div>
-      </div></div>
-    <a href="/azimi-marketing">Azimi Marketing</a>
-    <div class="dd"><a href="/podcasts">Media<span class="chev">⌄</span></a>
-      <div class="menu two">
-        <div><h5>Media</h5><a href="/podcasts#podcasts">Podcasts</a><a href="/podcasts#tv">TV-programma’s</a><a href="/podcasts#artikelen">Artikelen</a><a href="/socials">Socials</a></div>
-        <div><h5>Aanvragen</h5><a href="/podcasts#aanvragen">Media aanvragen</a><a href="/podcasts#aanvragen">Podcast aanvragen</a><a href="/speaking-request">Spreker aanvragen</a></div>
-      </div></div>
-    <a href="/portfolio">Portfolio</a>
-    <a href="/over-ons">Over ons</a>
-    <a href="/careers">Careers</a>
-    <a href="/boeken">Boek</a>
-  </nav>
-  <a class="btn-line" href="/contact">Kom in contact</a>
-  <button class="burger" id="burger" aria-label="Menu openen"><div><span></span><span></span></div></button>
-</header>
-
-<div class="mnav" id="mnav">
-  <button class="close" id="mclose" aria-label="Menu sluiten">×</button>
-  <a href="/">Home</a>
-  <h5>Events</h5><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/strategische-mastermind">Strategy Mastermind</a><a href="/vastgoed">Vastgoed Masterclass</a>
-  <h5>Coaching</h5><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a>
-  <h5>Meer</h5><a href="/portfolio">Portfolio</a><a href="/azimi-marketing">Azimi Marketing</a><a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a><a href="/boeken">Boek</a>
-  <a href="/contact" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
-</div>
-
 <header class="fn-top">
   <span class="fn-logo"><img src="/logo-header.webp" alt="Salar Azimi"></span>
   <span class="fn-tag">Azimi Network Event</span>
   <a class="fn-enter" href="/">Bekijk de hele site <span>→</span></a>
 </header>
-<section class="fn-ty">
+<section class="fn-ty nw-vert">
   <div class="inc-in">
     <span class="fn-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
     <span class="px-eyebrow">Azimi Network Event</span>
     <h1>Gefeliciteerd<span id="fn-name"></span>! <b id="fn-ty-h">Je call is bevestigd.</b></h1>
     <p class="fn-sub" id="fn-ty-sub">Belangrijk: bekijk deze video van Salar vóór je call. Dan weet je precies wat we gaan bespreken en haal je er het meeste uit.</p>
     <div class="inc-film">
-      <video id="fn-vid" autoplay muted loop playsinline poster="/inc-film.jpg"><source src="/hero.mp4" type="video/mp4"></video>
+      <video id="fn-vid" autoplay muted loop playsinline poster="/nw-hero-salar.jpg"><source src="/nw-hero-salar.mp4" type="video/mp4"></video>
       <button class="inc-sound" type="button" id="fn-sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="w" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg><span>Klik voor geluid</span></button>
     </div>
     <ol class="fn-steps">
@@ -77,14 +44,66 @@
 </div>
 
 <footer class="fn-foot"><span>© 2026 Salar Azimi</span><a href="/">Naar salar-azimi.nl</a></footer>
+<script>
+(function(){
+  // Calendly-agenda's: laden pas als ze in beeld komen (ook in pop-ups)
+  var els=[].slice.call(document.querySelectorAll('.cal-embed'));if(!els.length)return;
+  var loading=null;
+  function lib(){if(window.Calendly)return Promise.resolve();if(loading)return loading;
+    loading=new Promise(function(ok,no){var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;s.onload=ok;s.onerror=no;document.head.appendChild(s)});return loading}
+  function init(el){if(el._cal)return;el._cal=1;var u=el.dataset.cal,q='hide_gdpr_banner=1'+(el.dataset.theme==='dark'?'&background_color=0b0a08&text_color=f4eee3&primary_color=d9ba79':'&primary_color=9a7035');
+    lib().then(function(){Calendly.initInlineWidget({url:u+(u.indexOf('?')>-1?'&':'?')+q,parentElement:el,resize:true});var fb=el.parentNode.querySelector('.cal-fallback');if(fb)fb.classList.add('ok')})
+      .catch(function(){el._cal=0;el.classList.add('cal-failed');el.innerHTML='<a class="cal-open" href="'+u+'" target="_blank" rel="noopener">Open de agenda en plan je call →</a>'})}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){init(e.target);io.unobserve(e.target)}})},{rootMargin:'400px 0px'});els.forEach(function(el){io.observe(el)})}
+  else els.forEach(init);
+  // pop-up geopend: agenda direct laden
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;var m=document.getElementById(b.getAttribute('data-open'));if(m)setTimeout(function(){m.querySelectorAll('.cal-embed').forEach(init)},30)});
+})();
+</script>
+<script>
+(function(){
+  // ===== TRACKING (Meta, TikTok, Google) =====
+  // Vul hier de ID's in. Leeg = niets wordt geladen en er verschijnt ook geen cookiemelding.
+  var T={meta:'',tiktok:'',ga4:''}; // bijv. meta:'123456789012345', tiktok:'C1ABCDEF...', ga4:'G-XXXXXXX'
+  var on=false;
+  window.azTrack=function(ev){if(!on)return;try{
+    if(window.fbq)fbq('track',ev==='Schedule'?'Schedule':'Lead');
+    if(window.ttq)ttq.track(ev==='Schedule'?'Schedule':'SubmitForm');
+    if(window.gtag)gtag('event',ev==='Schedule'?'schedule_call':'generate_lead');}catch(e){}};
+  // geboekte call in Calendly = conversie
+  addEventListener('message',function(e){if(e.data&&e.data.event==='calendly.event_scheduled'&&window.azTrack)azTrack('Schedule')});
+  if(!T.meta&&!T.tiktok&&!T.ga4)return;
+  function load(){if(on)return;on=true;
+    if(T.meta){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',T.meta);fbq('track','PageView')}
+    if(T.tiktok){!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(T.tiktok);ttq.page()}(window,document,'ttq')}
+    if(T.ga4){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+T.ga4;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',T.ga4)}
+  }
+  var c=null;try{c=localStorage.getItem('az-consent')}catch(e){}
+  if(c==='ja'){load();return}if(c==='nee')return;
+  // cookiemelding
+  var b=document.createElement('div');b.className='az-ck';b.setAttribute('role','dialog');b.setAttribute('aria-label','Cookies');
+  b.innerHTML='<p>We gebruiken cookies om de website te verbeteren en je relevante advertenties te tonen.</p><div><button type="button" data-c="nee">Alleen noodzakelijk</button><button type="button" data-c="ja" class="ok">Accepteren</button></div>';
+  b.addEventListener('click',function(e){var x=e.target.closest('[data-c]');if(!x)return;try{localStorage.setItem('az-consent',x.dataset.c)}catch(err){}if(x.dataset.c==='ja')load();b.remove()});
+  (document.body?Promise.resolve():new Promise(function(r){addEventListener('DOMContentLoaded',r)})).then(function(){document.body.appendChild(b)});
+})();
+</script>
 <a id="fn-thanks" href="/azimi-netwerk-event-bedankt" hidden>Bedankt</a>
 <script>
 (function(){
-  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
-  window.AZ_MAIL='info@salar-azimi.nl';
-  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
-    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?l.textContent.replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
-    return fetch('https://formsubmit.co/ajax/'+window.AZ_MAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
+  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit). LET OP: de eerste inzending stuurt een activatiemail naar dit adres; klik die aan, anders komt er niets binnen.
+  window.AZ_MAIL='alexander@salarazimi.nl';
+  window.AZ_CC='marketing@salarazimi.nl'; // krijgt van elke aanvraag een kopie
+  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',_captcha:'false',Pagina:location.href},grp={};if(window.AZ_CC)d._cc=window.AZ_CC;
+    f.querySelectorAll('input,select,textarea').forEach(function(i){if(i.type==='submit'||i.type==='button')return;
+      if(i.type==='checkbox'||i.type==='radio'){if(!i.checked)return;var row=i.closest('.f-row'),lb=row&&row.querySelector('label');var g=lb?lb.childNodes[0].textContent.split('*').join('').trim():(i.name||'Keuze');(grp[g]=grp[g]||[]).push(i.value||'ja');return}
+      if(!i.value)return;var l=f.querySelector('label[for="'+i.id+'"]');var k=l?(l.childNodes[0].textContent||l.textContent).split('*').join('').trim():(i.name||i.id||'veld');d[k]=i.value});
+    for(var g in grp){if(!d[g])d[g]=grp[g].join(', ')}
+    var to=f.getAttribute('data-mail')||window.AZ_MAIL;
+    return fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw j;if(window.azTrack)azTrack('Lead');return j})})
+      .catch(function(){window.azFail(to)})}catch(e){window.azFail(window.AZ_MAIL);return Promise.resolve()}};
+  window.azFail=function(to){var b=document.getElementById('az-fail');if(!b){b=document.createElement('div');b.id='az-fail';b.setAttribute('role','alert');document.body.appendChild(b)}
+    b.innerHTML='<p><b>Je bericht is niet verstuurd.</b> Mail ons direct op <a href="mailto:'+to+'">'+to+'</a>, dan reageren we zo snel mogelijk.</p><button type="button" aria-label="Sluiten">×</button>';b.querySelector('button').onclick=function(){b.classList.remove('on')};b.classList.add('on')};
   // geluid op de hoofdvideo
   var v=document.getElementById('fn-vid'),b=document.getElementById('fn-sound');
   if(v&&b)b.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted){v.currentTime=0;v.play()}b.classList.toggle('on',!v.muted);b.querySelector('span').textContent=v.muted?'Klik voor geluid':'Geluid aan';var hs=v.closest('.fn-hasbg');if(hs)hs.classList.toggle('fn-focus',!v.muted)});
@@ -97,11 +116,11 @@
   // formulier
   var M=document.getElementById('fn-modal');
   var INL=M&&M.classList.contains('fn-inline');
-  function openM(){if(INL){M.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){M.querySelector('input').focus({preventScroll:true})},700);return}M.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){M.querySelector('input').focus()},50)}
+  function openM(){if(INL){M.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){var i=M.querySelector('input');if(i)i.focus({preventScroll:true})},700);return}M.hidden=false;document.body.style.overflow='hidden';setTimeout(function(){var i=M.querySelector('input');if(i)i.focus()},50)}
   function closeM(){if(INL)return;M.hidden=true;document.body.style.overflow=''}
   document.querySelectorAll('[data-open="fn-modal"]').forEach(function(x){x.addEventListener('click',openM)});
   if(M){M.addEventListener('click',function(e){if(e.target===M||e.target.closest('[data-close]'))closeM()});
-    var f=M.querySelector('form');f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
+    var f=M.querySelector('form');if(f)f.addEventListener('submit',function(e){e.preventDefault();var ok=true;
       f.querySelectorAll('input[required],select[required]').forEach(function(i){var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));i.classList.toggle('bad',bad);if(bad)ok=false});
       f.querySelector('.f-err').hidden=ok;if(!ok)return;
       var sent=azSend(f,document.getElementById('fn-mt').textContent)||Promise.resolve();f.querySelector('button[type=submit]').disabled=true;
@@ -109,7 +128,7 @@
       var go=function(){location.href=document.getElementById('fn-thanks').getAttribute('href')+'?aanvraag=1'};Promise.race([sent,new Promise(function(r){setTimeout(r,1500)})]).then(go,go)})}
   document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(M&&!M.hidden)closeM();if(!P.hidden)closeP()});
   // naam op bedankpagina
-  var n=document.getElementById('fn-name');if(n){try{var x=sessionStorage.getItem('fn-naam');if(x)n.textContent=(n.dataset.pre||' ')+x}catch(err){}}
+  var n=document.getElementById('fn-name');if(n){try{var qp=new URLSearchParams(location.search),x=qp.get('invitee_first_name')||(qp.get('invitee_full_name')||'').split(' ')[0]||sessionStorage.getItem('fn-naam');if(x)n.textContent=(n.dataset.pre||' ')+x}catch(err){}}
   // reveal
   var els=[].slice.call(document.querySelectorAll('.rv'));if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('rv-on');
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});els.forEach(function(el){io.observe(el)});setTimeout(function(){els.forEach(function(el){el.classList.add('in')})},4000)}
@@ -134,157 +153,5 @@
 })();
 </script>
 <script>(function(){if(/aanvraag=1/.test(location.search)){document.getElementById('fn-ty-h').textContent='Je aanvraag is binnen.';document.getElementById('fn-ty-sub').textContent='Ons team neemt persoonlijk contact met je op om je call in te plannen. Bekijk in de tussentijd deze video van Salar, dan weet je precies wat je kunt verwachten.'}})();</script>
-<footer class="ftr">
-  <div class="top">
-    <div class="brand">
-      <img src="/logo-header.webp" alt="Salar Azimi">
-      <h3>Business.<br>Vastgoed.<br>Netwerk.</h3>
-      <p>Ondernemerschap, ervaringen en toegang tot een netwerk waar echte gesprekken ontstaan.</p>
-    </div>
-    <div class="flinks">
-      <a href="/">Home</a><a href="/events">Oplossingen</a><a href="/azimi-marketing">Azimi Marketing</a>
-      <a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a>
-      <a href="/boeken">Boek</a>
-    </div>
-    <div class="fc">
-      <span class="lbl">Contact</span>
-      <h4>Een concreet idee?<br>Bespreek het.</h4>
-      <a class="btn-line" href="/contact">Kom in contact</a>
-      <div class="soc">
-        <a href="https://www.instagram.com/salarazimi/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7.1.1 5.8.1 4.9.3 4.1.6c-.8.3-1.5.7-2.2 1.4C1.3 2.7.9 3.4.6 4.2.3 4.9.1 5.8.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.2.6 2.9.3.8.7 1.5 1.4 2.2.7.7 1.4 1.1 2.2 1.4.8.3 1.6.5 2.9.6C8.3 24 8.7 24 12 24s3.7 0 4.9-.1c1.3-.1 2.2-.3 2.9-.6.8-.3 1.5-.7 2.2-1.4.7-.7 1.1-1.4 1.4-2.2.3-.8.5-1.6.6-2.9.1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.2-.6-2.9-.3-.8-.7-1.5-1.4-2.2C21.3 1.3 20.6.9 19.8.6 19.1.3 18.2.1 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
-        <a href="https://www.tiktok.com/@salarazimi.official" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.5 0h4.1c.3 2.4 1.7 4.4 4 5.3.6.2 1.2.3 1.8.4v4.1c-2.1 0-4-.7-5.7-1.9v8.5c0 4.2-3.4 7.6-7.6 7.6S1.5 20.6 1.5 16.4s3.4-7.6 7.6-7.6c.4 0 .8 0 1.2.1v4.2c-.4-.1-.8-.2-1.2-.2-1.9 0-3.5 1.6-3.5 3.5s1.6 3.5 3.5 3.5 3.5-1.6 3.5-3.5V0z"/></svg></a>
-        <a href="https://www.youtube.com/@salarazimi.official" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></a>
-      </div>
-    </div>
-  </div>
-  <div class="bot">
-    <span>© 2026 Salar Azimi</span>
-    <span><a href="#" data-soon="1">Algemene voorwaarden</a><a href="#" data-soon="1">Privacy</a></span>
-  </div>
-</footer>
-
-
-<a class="livebar" id="livebar" href="/events" hidden>
-  <span class="lb-dot" aria-hidden="true"></span>
-  <span class="lb-tag">Live event</span>
-  <span class="lb-txt"><b id="lb-name"></b><span id="lb-when"></span></span>
-  <span class="lb-cd" id="lb-cd"></span>
-  <span class="lb-cta">Meld je aan <i>→</i></span>
-</a>
-<script>
-(function(){
-  // Eerstvolgende live event, automatisch. Pas deze lijst aan bij nieuwe edities.
-  var L=[
-    {n:'Strategy Mastermind Marrakech',w:'12–16 nov · Marrakech',d:'2026-11-12',h:'strategische-mastermind/'},
-    {n:'Azimi Grand Netwerk Event',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'azimi-netwerk-event/'},
-    {n:'Marrakech Incentive',w:'21–25 jan · Marrakech',d:'2027-01-21',h:'events/#marrakech2'}
-  ];
-  var b=document.getElementById('livebar'),now=new Date(),e=L.filter(function(x){return new Date(x.d+'T23:59:59')>=now})[0];
-  if(!b||!e)return;
-  var base=b.getAttribute('href').replace(/events\/?(\.html)?$/,'');
-  b.href=b.getAttribute('href').indexOf('.html')>-1?base+e.h.replace(/\/(#|$)/,'.html$1'):base+e.h;
-  document.getElementById('lb-name').textContent=e.n;document.getElementById('lb-when').textContent=e.w;
-  var t=new Date(e.d+'T19:00:00'),cd=document.getElementById('lb-cd');
-  function tick(){var s=Math.max(0,(t-new Date())/1e3|0),dd=s/86400|0,hh=s%86400/3600|0,mm=s%3600/60|0;cd.textContent=s?(dd?dd+'d ':'')+hh+'u '+mm+'m':'Vandaag';}
-  tick();setInterval(tick,30000);b.hidden=false;document.body.classList.add('has-lb');
-})();
-</script>
-
-<a class="minimap" id="minimap" href="/wereldkaart" aria-label="Open de wereldkaart met alle events en incentives" hidden>
-  <span class="mm-view"><img class="mm-map" src="/wk-map.jpg" alt="" loading="lazy"><span class="mm-grid"></span><span class="mm-sweep"></span><span class="mm-pins" id="mm-pins"></span></span>
-  <span class="mm-top"><i></i>Azimi Events</span>
-  <span class="mm-n">N</span>
-  <span class="mm-bar"><b id="mm-count">Wereldkaart</b><span>Open kaart <i>→</i></span></span>
-</a>
-<script>
-(function(){
-  var a=document.getElementById('minimap');if(!a||/wereldkaart/.test(location.pathname))return;
-  var K=344.490488147505,TX=1000,TY=500,R=Math.PI/180;
-  function fw(lon,lat){var l=(lon-10)*R,p=lat*R,p2=p*p,p4=p2*p2;return [TX+K*l*(0.8707-0.131979*p2+p4*(-0.013791+p4*(0.003971*p2-0.001529*p4))),TY-K*p*(1.007226+p2*(0.015085+p4*(-0.044475+0.028874*p2-0.005916*p4)))]}
-  // Bestemmingen op de minimap. Pas aan bij nieuwe edities (zelfde als de wereldkaart).
-  var P=[{n:'Marrakech',lon:-7.98,lat:31.63,d:'2026-11-16',hot:1},{n:'Istanbul',lon:28.98,lat:41.01,d:'2026-11-23'},{n:'Noorwegen',lon:9.65,lat:60.39,d:'2026-12-14'},{n:'Marrakech',lon:-7.98,lat:31.63,d:'2027-01-25'}];
-  var now=new Date(),seen={},live=P.filter(function(x){if(new Date(x.d+'T23:59:59')<now||seen[x.n])return false;return seen[x.n]=1});
-  var hq=fw(3.5,51.3);
-  function draw(){var mob=matchMedia('(max-width:999px)').matches,W=mob?380:540,c=mob?fw(5,44):fw(11,43),x0=c[0]-W/2,y0=c[1]-W/2;
-    var img=a.querySelector('.mm-map');img.style.width=(2000/W*100)+'%';img.style.left=(-x0/W*100)+'%';img.style.top=(-y0/W*100)+'%';
-    var pins=document.getElementById('mm-pins'),h='';
-    live.forEach(function(m){var q=fw(m.lon,m.lat);h+='<i class="mm-pin'+(m.hot?' hot':'')+'" style="left:'+((q[0]-x0)/W*100)+'%;top:'+((q[1]-y0)/W*100)+'%"></i>'});
-    h+='<i class="mm-me" style="left:'+((hq[0]-x0)/W*100)+'%;top:'+((hq[1]-y0)/W*100)+'%"></i>';pins.innerHTML=h}
-  document.getElementById('mm-count').textContent=live.length+' live';
-  draw();addEventListener('resize',draw);a.hidden=false;
-})();
-</script>
-<div class="incpop" id="incpop" hidden>
-  <div class="incpop-box" role="dialog" aria-modal="true" aria-labelledby="incpop-t">
-    <button class="incpop-x" type="button" aria-label="Sluiten">×</button>
-    <div class="incpop-img"><img src="/inc-marrakech.jpg" alt="Resort in Marrakech" loading="lazy"><span class="incpop-tag"><i></i>Aankomende incentive</span></div>
-    <div class="incpop-body">
-      <span class="incpop-date">12 – 16 november 2026 · Marrakech</span>
-      <h2 id="incpop-t">Vijf dagen Marrakech met Salar.</h2>
-      <p>Strategie, 1-op-1 momenten en een netwerk dat blijft. All inclusive, beperkt aantal plekken.</p>
-      <div class="incpop-btns">
-        <a class="incpop-main" href="/strategische-mastermind">Meld je aan <span>→</span></a>
-        <a class="incpop-dm" id="incpop-dm" href="/contact?gesprek=1"><span>Plan een gesprek</span></a>
-      </div>
-      <span class="incpop-price">€4.995 ex. btw</span>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  var h=document.getElementById('hdr');
-  function onScroll(){h.classList.toggle('scrolled',window.scrollY>40)}
-  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
-  document.querySelectorAll('.dd>a').forEach(function(a){
-    a.addEventListener('click',function(e){
-      var d=a.parentNode;
-      if(!d.classList.contains('open')&&window.matchMedia('(hover:none)').matches){e.preventDefault();d.classList.add('open');}
-    });
-  });
-
-
-  // Alle formulieren komen binnen op dit e-mailadres (via FormSubmit; eerste inzending = activatiemail bevestigen)
-  window.AZ_MAIL='info@salar-azimi.nl';
-  window.azSend=function(f,subject){try{var d={_subject:(subject||document.title)+' · website',_template:'table',Pagina:location.href};
-    f.querySelectorAll('input,select,textarea').forEach(function(i){if(!i.value||i.type==='submit'||i.type==='checkbox'||i.type==='radio')return;var l=f.querySelector('label[for="'+i.id+'"]');var k=(l?(l.childNodes[0].textContent||l.textContent).replace(/\*/g,'').trim():(i.name||i.id||'veld'));d[k]=i.value});
-    return fetch('https://formsubmit.co/ajax/'+(f.getAttribute('data-mail')||window.AZ_MAIL),{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true}).catch(function(){})}catch(e){return Promise.resolve()}};
-  // Formulieren in pop-ups (boek, masterclass)
-  function openM(m){m.hidden=false;document.body.style.overflow='hidden';var i=m.querySelector('input');if(i)setTimeout(function(){i.focus()},50)}
-  function closeM(m){m.hidden=true;document.body.style.overflow=''}
-  document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){var m=document.getElementById(b.getAttribute('data-open'));if(m)openM(m)})});
-  document.querySelectorAll('.modal').forEach(function(m){
-    m.addEventListener('click',function(e){if(e.target===m||e.target.closest('[data-close]'))closeM(m)});
-    var f=m.querySelector('form');if(!f)return;
-    f.addEventListener('submit',function(e){
-      e.preventDefault();var ok=true;
-      f.querySelectorAll('[required]').forEach(function(i){
-        var bad=!i.value.trim()||(i.type==='email'&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(i.value));
-        i.classList.toggle('bad',bad);if(bad)ok=false;});
-      f.querySelector('.f-err').hidden=ok;if(!ok)return;
-      var ht=m.querySelector('h2');window.azSend(f,ht?ht.textContent:'');
-      m.querySelector('.bm-form').hidden=true;m.querySelector('.bm-done').hidden=false;
-    });
-  });
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.modal:not([hidden])').forEach(closeM)});
-  // Pagina's die nog gebouwd worden: melding in plaats van de oude site
-  var toast=document.createElement('div');toast.className='soon-toast';toast.setAttribute('role','status');document.body.appendChild(toast);var tt;
-  document.addEventListener('click',function(e){var a=e.target.closest('a[data-soon]');if(!a)return;e.preventDefault();toast.textContent=((a.childNodes[0]&&a.childNodes[0].textContent||a.textContent).replace(/[⌄→›]/g,'').trim()||'Deze pagina')+' volgt binnenkort';toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},2200)});
-
-  // Pop-up aankomende incentive na 30 seconden, één keer per bezoek
-  (function(){
-    var P=document.getElementById('incpop');if(!P||/azimi-inc|events/.test(location.pathname))return;
-    var seen=false;try{seen=sessionStorage.getItem('incpop')==='1'}catch(e){}
-    if(seen)return;
-    function show(){if(document.querySelector('.modal:not([hidden]),.px-ep:not([hidden]),.mnav.open'))return setTimeout(show,5000);P.hidden=false;requestAnimationFrame(function(){P.classList.add('on')});try{sessionStorage.setItem('incpop','1')}catch(e){}}
-    function hide(){P.classList.remove('on');setTimeout(function(){P.hidden=true},250)}
-    setTimeout(show,30000);
-    P.addEventListener('click',function(e){if(e.target===P||e.target.closest('.incpop-x'))hide()});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!P.hidden)hide()});
-  })();
-  var m=document.getElementById('mnav');
-  document.getElementById('burger').onclick=function(){m.classList.add('open')};
-  document.getElementById('mclose').onclick=function(){m.classList.remove('open')};
-})();
-</script>
 </body>
 </html>
