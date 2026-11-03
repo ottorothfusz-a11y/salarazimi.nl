@@ -44,7 +44,7 @@
 </div>
 
 <section class="dm-hero spk-hero">
-  <img class="dm-hero-bg" src="/spk-hero.jpg" alt="Salar Azimi voor Kasteel De Elderschans">
+  <img class="dm-hero-bg" src="/netwerk-events.jpg" alt="Salar Azimi aan tafel met ondernemers" style="object-position:50% 40%">
   <div class="dm-hero-in">
     <span class="dm-eyebrow">Speaking · podium · interview</span>
     <h1>Salar Azimi<br><b>als spreker.</b></h1>
@@ -177,7 +177,7 @@
   // Eerstvolgende live event, automatisch. Pas deze lijst aan bij nieuwe edities.
   var L=[
     {n:'Strategy Mastermind Marrakech',w:'12–16 nov · Marrakech',d:'2026-11-12',h:'strategische-mastermind/'},
-    {n:'Azimi Grand Netwerk Event',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'azimi-netwerk-event/'},
+    {n:'Azimi Mastermind',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'azimi-netwerk-event/'},
     {n:'Marrakech Incentive',w:'21–25 jan · Marrakech',d:'2027-01-21',h:'events/#marrakech2'}
   ];
   var b=document.getElementById('livebar'),now=new Date(),e=L.filter(function(x){return new Date(x.d+'T23:59:59')>=now})[0];
@@ -253,8 +253,13 @@
       if(!i.value)return;var l=f.querySelector('label[for="'+i.id+'"]');var k=l?(l.childNodes[0].textContent||l.textContent).split('*').join('').trim():(i.name||i.id||'veld');d[k]=i.value});
     for(var g in grp){if(!d[g])d[g]=grp[g].join(', ')}
     var to=f.getAttribute('data-mail')||window.AZ_MAIL;
-    return fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true})
-      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw j;if(window.azTrack)azTrack('Lead');return j})})
+    function fs(){return fetch('https://formsubmit.co/ajax/'+to,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(d),keepalive:true})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok||String(j.success)!=='true')throw j;return j})})}
+    // 1) eigen Vercel-functie (logt + mailt via Resend), 2) als die (nog) niet mailt: FormSubmit als reserve
+    return fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d),keepalive:true})
+      .then(function(r){return r.ok?r.json():{ok:false}}).catch(function(){return{ok:false}})
+      .then(function(j){if(j&&j.mailed)return j;return fs().catch(function(e){if(j&&j.ok)return j;throw e})})
+      .then(function(j){if(window.azTrack)azTrack('Lead');return j})
       .catch(function(){window.azFail(to)})}catch(e){window.azFail(window.AZ_MAIL);return Promise.resolve()}};
   window.azFail=function(to){var b=document.getElementById('az-fail');if(!b){b=document.createElement('div');b.id='az-fail';b.setAttribute('role','alert');document.body.appendChild(b)}
     b.innerHTML='<p><b>Je bericht is niet verstuurd.</b> Mail ons direct op <a href="mailto:'+to+'">'+to+'</a>, dan reageren we zo snel mogelijk.</p><button type="button" aria-label="Sluiten">×</button>';b.querySelector('button').onclick=function(){b.classList.remove('on')};b.classList.add('on')};
@@ -298,15 +303,23 @@
 </script>
 <script>
 (function(){
-  // Calendly-agenda's: laden pas als ze in beeld komen (ook in pop-ups)
+  // Calendly-agenda's: direct als iframe (geen extern script nodig, dus geen last van adblockers).
+  // De agenda is direct zichtbaar. Alleen als het venster na 15 seconden nog niet geladen is, verschijnt een grote knop.
   var els=[].slice.call(document.querySelectorAll('.cal-embed'));if(!els.length)return;
-  var loading=null;
-  function lib(){if(window.Calendly)return Promise.resolve();if(loading)return loading;
-    loading=new Promise(function(ok,no){var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;s.onload=ok;s.onerror=no;document.head.appendChild(s)});return loading}
-  function init(el){if(el._cal)return;el._cal=1;var u=el.dataset.cal,q='hide_gdpr_banner=1'+(el.dataset.theme==='dark'?'&background_color=0b0a08&text_color=f4eee3&primary_color=d9ba79':'&primary_color=9a7035');
-    lib().then(function(){Calendly.initInlineWidget({url:u+(u.indexOf('?')>-1?'&':'?')+q,parentElement:el,resize:true});var fb=el.parentNode.querySelector('.cal-fallback');if(fb)fb.classList.add('ok')})
-      .catch(function(){el._cal=0;el.classList.add('cal-failed');el.innerHTML='<a class="cal-open" href="'+u+'" target="_blank" rel="noopener">Open de agenda en plan je call →</a>'})}
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){init(e.target);io.unobserve(e.target)}})},{rootMargin:'400px 0px'});els.forEach(function(el){io.observe(el)})}
+  function bigBtn(el){var u=el.dataset.cal;el.classList.add('cal-failed');
+    el.innerHTML='<div class="cal-big"><span class="cal-big-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><b>Kies je moment</b><span>De agenda opent in een nieuw venster.</span><a class="cal-open" href="'+u+'" target="_blank" rel="noopener">Open de agenda <i>→</i></a></div>'}
+  function init(el){if(el._cal)return;el._cal=1;var u=el.dataset.cal,dark=el.dataset.theme==='dark';
+    var q='embed_type=Inline&embed_domain='+encodeURIComponent(location.hostname||'salarazimi.nl')+'&hide_gdpr_banner=1&hide_event_type_details=0'+(dark?'&background_color=0b0a08&text_color=f4eee3&primary_color=d9ba79':'&primary_color=9a7035');
+    el.innerHTML='<div class="cal-load"><i></i><span>Agenda laden…</span></div>';
+    var f=document.createElement('iframe');f.src=u+(u.indexOf('?')>-1?'&':'?')+q;f.title='Plan je gesprek';f.setAttribute('frameborder','0');f.allow='payment';f.loading='eager';
+    f.addEventListener('load',function(){el._ok=1;clearTimeout(el._t);el.classList.add('cal-ok')});
+    el.appendChild(f);el._t=setTimeout(function(){if(!el._ok)bigBtn(el)},15000)}
+  addEventListener('message',function(e){if(!e.data||typeof e.data.event!=='string'||e.data.event.indexOf('calendly.')!==0)return;
+    var el=els.filter(function(x){var f=x.querySelector('iframe');return f&&f.contentWindow===e.source})[0];
+    if(el&&!el._ok){el._ok=1;clearTimeout(el._t);el.classList.add('cal-ok')}
+    if(el&&e.data.event==='calendly.page_height'&&e.data.payload&&e.data.payload.height){var h=parseInt(e.data.payload.height,10);if(h>300)el.style.height=Math.min(h,1100)+'px'}
+    if(e.data.event==='calendly.event_scheduled'){var to=(el||els[0]).dataset.thanks;if(window.azTrack)azTrack('Schedule');if(to)setTimeout(function(){location.href=to},700)}});
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){init(x.target);io.unobserve(x.target)}})},{rootMargin:'600px 0px'});els.forEach(function(el){io.observe(el)})}
   else els.forEach(init);
   // pop-up geopend: agenda direct laden
   document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;var m=document.getElementById(b.getAttribute('data-open'));if(m)setTimeout(function(){m.querySelectorAll('.cal-embed').forEach(init)},30)});
