@@ -3462,3 +3462,8 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:manual;-webkit-hyphens:m
 .am-col.c video{object-position:50% 30%}
 @media (max-width:900px){.am-col figcaption{top:auto}}
 .am-col.l video{object-position:30% 50%}
+.nav a.nav-hot{display:inline-flex;align-items:center;gap:.45rem;color:#d9ba79!important;font-weight:700}
+.nav a.nav-hot i{font-style:normal;font-size:.62rem;font-weight:800;letter-spacing:.06em;padding:.18rem .42rem;border-radius:999px;background:#d9ba79;color:#0b0a08}
+.mnav a.m-hot{color:#d9ba79!important;font-weight:700}
+@media (max-width:1320px){.nav a.nav-hot i{display:none}}
+@media (max-width:1240px){.nav a.nav-hot span{display:none}}
