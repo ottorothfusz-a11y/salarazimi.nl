@@ -3295,3 +3295,12 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:manual;-webkit-hyphens:m
 .cal-embed iframe{opacity:1!important}
 .cal-embed{min-height:640px}
 @media(max-width:700px){.cal-embed{min-height:900px}}
+/* special guest: brede kaart onder de hosts */
+.mx-guest{grid-column:1/-1;flex-direction:row}
+.mx-guest .mx-host-img{flex:0 0 40%;aspect-ratio:auto;height:30rem}
+.mx-guest .mx-host-img img{position:absolute;inset:0}
+.mx-guest .mx-host-img::after{background:linear-gradient(270deg,#100e0b 0%,rgba(16,14,11,0) 40%)}
+.mx-guest .mx-host-b{flex:1;min-width:0;align-self:center;margin-top:0;padding:2.4rem 2.6rem}
+@media (max-width:900px){.mx-guest .mx-host-b{margin-top:-3rem;padding:0 20px 22px}}
+.mx-guest .mx-host-tag{background:linear-gradient(135deg,#f3d98b,#b8862f);color:#1a1307}
+@media (max-width:900px){.mx-guest{flex-direction:column}.mx-guest .mx-host-img{flex:none;aspect-ratio:4/3.4;min-height:0}.mx-guest .mx-host-img::after{background:linear-gradient(0deg,#100e0b 0%,rgba(16,14,11,0) 45%)}}
