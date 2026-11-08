@@ -41,6 +41,11 @@
       "source": "/azimi-netwerk-events",
       "destination": "/azimi-netwerk-event",
       "permanent": true
+    },
+    {
+      "source": "/azimi-mastermind",
+      "destination": "/transformatie-mastermind",
+      "permanent": true
     }
   ]
 }

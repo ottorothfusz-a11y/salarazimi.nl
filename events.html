@@ -94,6 +94,7 @@
 </div>
 
 <a id="ev-inc-link" href="/azimi-inc" hidden>Azimi Experience</a>
+<a id="ev-amm-link" href="/transformatie-mastermind" hidden>Transformatie Mastermind</a>
 <script>
 (function(){
   // Agenda: verlopen items verdwijnen vanzelf (end = laatste dag)
@@ -102,7 +103,7 @@
     {id:'halloween',type:'event',name:'Azimi Halloween Party',where:'Zeeland',start:'2026-10-31',end:'2026-10-31',when:'31 oktober 2026 · 19:00',price:'€999',vid:'halloween',pts:['Aanvang 19:00 uur in Zeeland','Netwerken met ondernemers','Een avond op z’n Azimi’s']},
     {id:'marrakech',type:'incentive',name:'Strategy Mastermind Marrakech',where:'Marrakech',start:'2026-11-12',end:'2026-11-16',when:'12 t/m 16 november 2026',price:'€4.995',vid:'luxe-v',link:1,pts:['4 nachten, 5 dagen','Salar & Rabi, 1-op-1 momenten','Volledig verzorgd, all inclusive']},
     {id:'istanbul',type:'incentive',name:'Istanbul Incentive',where:'Istanbul',start:'2026-11-18',end:'2026-11-23',when:'18 t/m 23 november 2026',price:'€9.995',vid:'istanbul',pts:['5 nachten, 6 dagen','Ultra all-inclusive, vervoer geregeld','Speech van Salar, netwerken']},
-    {id:'grand',type:'event',name:'Azimi Mastermind',where:'Hotel De Elderschans',start:'2026-11-28',end:'2026-11-28',when:'28 november 2026',price:'€1.999',vid:'grand',pts:['Speech van Salar en iemand uit zijn netwerk','Live netwerken met multimiljonairs en experts','Inclusief vorstelijk diner']},
+    {id:'grand',type:'event',link:'ev-amm-link',name:'Transformatie Mastermind',where:'Hotel De Elderschans',start:'2026-11-28',end:'2026-11-28',when:'28 november 2026',price:'€1.999',vid:'grand',pts:['Speech van Salar en iemand uit zijn netwerk','Live netwerken met multimiljonairs en experts','Inclusief vorstelijk diner']},
     {id:'noorwegen',type:'incentive',name:'Noorwegen Incentive',where:'Oslo & Hemsedal',start:'2026-12-09',end:'2026-12-14',when:'9 t/m 14 december 2026',price:'€5.999',was:'€9.999',vid:'noorwegen',pts:['5 nachten, 6 dagen, vliegreis inbegrepen','Oslo en Hemsedal, ultra all-inclusive','Speech van Salar, toegang tot zijn netwerk']},
     {id:'marrakech2',type:'incentive',name:'Marrakech Incentive',where:'Marrakech',start:'2027-01-21',end:'2027-01-25',when:'21 t/m 25 januari 2027',price:'€4.999',vid:'luxe-v',extra:'Optioneel: verblijf in de villa van Salar & Rabi · €9.995',pts:['4 nachten, 5 dagen','Speech van Salar Azimi & Rabi Adli','Ultra all-inclusive, toegang tot het netwerk']}
   ];
@@ -117,7 +118,7 @@
       '<div class="ev-card-body"><span class="ev-when">'+e.when+'</span><h3>'+e.name+'</h3><span class="ev-where">'+e.where+'</span>'+
       '<ul>'+e.pts.map(function(p){return '<li>'+p+'</li>'}).join('')+'</ul>'+(e.extra?'<p class="ev-extra">✦ '+e.extra+'</p>':'')+
       '<div class="ev-card-foot"><div class="ev-price">'+(e.was?'<s>'+e.was+'</s>':'')+'<b>'+e.price+'</b><span>excl. btw</span></div>'+
-      (e.link?'<a class="ev-btn" href="'+document.getElementById('ev-inc-link').getAttribute('href')+'">Bekijk →</a>':'<button class="ev-btn" type="button" data-open="ev-modal" data-ev="'+e.id+'">Bekijk of je geschikt bent</button>')+'</div></div>';
+      (e.link?'<a class="ev-btn" href="'+document.getElementById(typeof e.link==='string'?e.link:'ev-inc-link').getAttribute('href')+'">Bekijk →</a>':'<button class="ev-btn" type="button" data-open="ev-modal" data-ev="'+e.id+'">Bekijk of je geschikt bent</button>')+'</div></div>';
     g.appendChild(a);
   });
   document.getElementById('ev-empty').hidden=live.length>0;
@@ -182,7 +183,7 @@
   // Eerstvolgende live event, automatisch. Pas deze lijst aan bij nieuwe edities.
   var L=[
     {n:'Strategy Mastermind Marrakech',w:'12–16 nov · Marrakech',d:'2026-11-12',h:'strategische-mastermind/'},
-    {n:'Azimi Mastermind',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'azimi-netwerk-event/'},
+    {n:'Transformatie Mastermind',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'transformatie-mastermind/'},
     {n:'Marrakech Incentive',w:'21–25 jan · Marrakech',d:'2027-01-21',h:'events/#marrakech2'}
   ];
   var b=document.getElementById('livebar'),now=new Date(),e=L.filter(function(x){return new Date(x.d+'T23:59:59')>=now})[0];
