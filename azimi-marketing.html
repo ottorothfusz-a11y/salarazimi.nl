@@ -17,8 +17,8 @@
     <a class="nav-hot" href="/transformatie-mastermind">Transformatie<span> Mastermind</span><i>28/11</i></a>
     <div class="dd"><a href="/events">Oplossingen<span class="chev">⌄</span></a>
       <div class="menu">
-        <div><h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/strategische-mastermind">Strategy Mastermind</a><a href="/vastgoed">Vastgoed Masterclass</a></div>
-        <div><h5>Coaching</h5><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a></div>
+        <div><h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/vastgoed">Vastgoed Masterclass</a></div>
+        <div><h5>Coaching</h5><a href="/groeiscan">Gratis groeiscan</a><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a></div>
       </div></div>
     <a class="on" href="/azimi-marketing">Azimi Marketing</a>
     <div class="dd"><a href="/podcasts">Media<span class="chev">⌄</span></a>
@@ -39,8 +39,8 @@
   <button class="close" id="mclose" aria-label="Menu sluiten">×</button>
   <a href="/">Home</a>
   <a class="m-hot" href="/transformatie-mastermind">Transformatie Mastermind · 28/11</a>
-  <h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/strategische-mastermind">Strategy Mastermind</a><a href="/vastgoed">Vastgoed Masterclass</a>
-  <h5>Coaching</h5><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a>
+  <h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/vastgoed">Vastgoed Masterclass</a>
+  <h5>Coaching</h5><a href="/groeiscan">Gratis groeiscan</a><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a>
   <h5>Meer</h5><a href="/portfolio">Portfolio</a><a href="/azimi-marketing">Azimi Marketing</a><a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a><a href="/boeken">Boek</a>
   <a href="/contact" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
 </div>
@@ -238,7 +238,6 @@
 (function(){
   // Eerstvolgende live event, automatisch. Pas deze lijst aan bij nieuwe edities.
   var L=[
-    {n:'Strategy Mastermind Marrakech',w:'12–16 nov · Marrakech',d:'2026-11-12',h:'strategische-mastermind/'},
     {n:'Transformatie Mastermind',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'transformatie-mastermind/'},
     {n:'Marrakech Incentive',w:'21–25 jan · Marrakech',d:'2027-01-21',h:'events/#marrakech2'}
   ];
@@ -280,16 +279,16 @@
 <div class="incpop" id="incpop" hidden>
   <div class="incpop-box" role="dialog" aria-modal="true" aria-labelledby="incpop-t">
     <button class="incpop-x" type="button" aria-label="Sluiten">×</button>
-    <div class="incpop-img"><img src="/inc-marrakech.jpg" alt="Resort in Marrakech" loading="lazy"><span class="incpop-tag"><i></i>Aankomende incentive</span></div>
+    <div class="incpop-img"><img src="/pop-transformatie.jpg" alt="Salar Azimi en Rabi Adli" loading="lazy"><span class="incpop-tag"><i></i>Live event · 28 november</span></div>
     <div class="incpop-body">
-      <span class="incpop-date">12 – 16 november 2026 · Marrakech</span>
-      <h2 id="incpop-t">Vijf dagen Marrakech met Salar.</h2>
-      <p>Strategie, 1-op-1 momenten en een netwerk dat blijft. All inclusive, beperkt aantal plekken.</p>
+      <span class="incpop-date">28 november 2026 · Hotel De Elderschans</span>
+      <h2 id="incpop-t">Transformatie Mastermind.</h2>
+      <p>Eén avond met Salar Azimi, Rabi Adli en Otto Rothfusz. Meer winst, meer overhouden, een AI-medewerker binnen 30 dagen. Jouw vraag aan tafel, beperkt aantal plekken.</p>
       <div class="incpop-btns">
-        <a class="incpop-main" href="/strategische-mastermind">Meld je aan <span>→</span></a>
+        <a class="incpop-main" href="/transformatie-mastermind">Bekijk het event <span>→</span></a>
         <a class="incpop-dm" id="incpop-dm" href="https://calendly.com/alexander-salarazimi/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
       </div>
-      <span class="incpop-price">€4.995 ex. btw</span>
+      <span class="incpop-price">Aardenburg · vanaf 15:00 uur</span>
     </div>
   </div>
 </div>
@@ -349,10 +348,10 @@
 
   // Pop-up aankomende incentive na 30 seconden, één keer per bezoek
   (function(){
-    var P=document.getElementById('incpop');if(!P||/azimi-inc|events/.test(location.pathname))return;
-    var seen=false;try{seen=sessionStorage.getItem('incpop')==='1'}catch(e){}
+    var P=document.getElementById('incpop');if(!P||/transformatie-mastermind|events/.test(location.pathname))return;
+    var seen=false;try{seen=sessionStorage.getItem('incpop2')==='1'}catch(e){}
     if(seen)return;
-    function show(){if(document.querySelector('.modal:not([hidden]),.px-ep:not([hidden]),.mnav.open'))return setTimeout(show,5000);P.hidden=false;requestAnimationFrame(function(){P.classList.add('on')});try{sessionStorage.setItem('incpop','1')}catch(e){}}
+    function show(){if(document.querySelector('.modal:not([hidden]),.px-ep:not([hidden]),.mnav.open'))return setTimeout(show,5000);P.hidden=false;requestAnimationFrame(function(){P.classList.add('on')});try{sessionStorage.setItem('incpop2','1')}catch(e){}}
     function hide(){P.classList.remove('on');setTimeout(function(){P.hidden=true},250)}
     setTimeout(show,30000);
     P.addEventListener('click',function(e){if(e.target===P||e.target.closest('.incpop-x'))hide()});

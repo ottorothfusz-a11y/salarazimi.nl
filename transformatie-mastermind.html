@@ -19,6 +19,7 @@
   <div class="am-wall" aria-label="Video's van de drie sprekers"><figure class="am-vp am-col l"><video muted loop playsinline autoplay preload="metadata" poster="/amm-v-otto.jpg"><source src="/amm-v-otto.mp4" type="video/mp4"></video><figcaption><span>AI</span><b>Otto Rothfusz</b></figcaption></figure><figure class="am-vp am-col c"><video muted loop playsinline autoplay preload="metadata" poster="/amm-v-salar.jpg"><source src="/amm-v-salar.mp4" type="video/mp4"></video><figcaption><span>Host</span><b>Salar Azimi</b></figcaption></figure><figure class="am-vp am-col r"><video muted loop playsinline autoplay preload="metadata" poster="/amm-v-rabi.jpg"><source src="/amm-v-rabi.mp4" type="video/mp4"></video><figcaption><span>Fiscaal</span><b>Rabi Adli</b></figcaption></figure></div>
   <div class="am-h2-in">
     <span class="mx-orig"><b>A</b>Azimi Original · 28 november 2026 · Hotel De Elderschans</span>
+    <div class="am-who"><span><img src="/mm-salar-avatar.jpg" alt=""><img src="/mm-rabi-avatar.jpg" alt=""><img src="/amm-otto-avatar.jpg" alt=""></span><p>Met <b>Salar Azimi</b>, <b>Rabi Adli</b> &amp; <b>Otto Rothfusz</b></p></div>
     <h1>Transformatie <em>Mastermind</em></h1>
     <p class="am-h2-lead">Eén avond. Drie sprekers. Drie vragen die je bedrijf veranderen.</p>
     <div class="am-h2-row">
@@ -309,6 +310,10 @@
   var vp=[].slice.call(document.querySelectorAll('.am-vp video'));
   document.querySelectorAll('.am-snd').forEach(function(b){b.addEventListener('click',function(){var v=b.parentNode.querySelector('video'),on=v.muted;
     vp.forEach(function(x){x.muted=true;x.parentNode.classList.remove('snd')});if(on){v.muted=false;v.currentTime=0;v.play().catch(function(){});b.parentNode.classList.add('snd')}})});
+  // iOS: video's altijd stil laten afspelen, geen afspeelknop
+  var hv=[].slice.call(document.querySelectorAll('.am-wall video'));
+  function go(){hv.forEach(function(v){v.muted=true;v.setAttribute('muted','');v.playsInline=true;var q=v.play();if(q&&q.catch)q.catch(function(){})})}
+  go();document.addEventListener('touchstart',go,{once:true,passive:true});document.addEventListener('visibilitychange',function(){if(!document.hidden)go()});
   // Salars vraag
   var out=document.getElementById('am-ask-out'),txt=document.getElementById('am-ask-txt');
   document.querySelectorAll('.am-ask-btns button').forEach(function(b){b.addEventListener('click',function(){

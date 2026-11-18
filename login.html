@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inloggen – Salar Azimi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bodoni+Moda:wght@400;500&family=JetBrains+Mono:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="lg-page">
+  <div class="lg-card" role="main">
+    <div class="lg-top"><a href="/" aria-label="Naar salarazimi.nl"><img src="/logo-header.webp" alt="Salar Azimi"></a></div>
+    <div class="lg-body">
+      <!-- stap 1: e-mail -->
+      <form class="lg-step" id="lg-1" novalidate>
+        <h1>Inloggen</h1>
+        <p class="lg-sub">We sturen een eenmalige code naar je e-mail.</p>
+        <label for="lg-mail">E-mailadres</label>
+        <input id="lg-mail" type="email" autocomplete="email" inputmode="email" placeholder="jij@bedrijf.nl" required>
+        <div class="lg-row"><span id="lg-keep-l">Ingelogd blijven</span><button type="button" class="lg-sw on" id="lg-keep" role="switch" aria-checked="true" aria-labelledby="lg-keep-l"><i></i></button></div>
+        <p class="lg-err" id="lg-err1" hidden>Vul een geldig e-mailadres in.</p>
+        <button class="lg-btn" type="submit">Doorgaan</button>
+      </form>
+      <!-- stap 2: code -->
+      <form class="lg-step" id="lg-2" novalidate hidden>
+        <button type="button" class="lg-back" id="lg-back">← Ander e-mailadres</button>
+        <h1>Check je e-mail</h1>
+        <p class="lg-sub">Vul de 6-cijferige code in die we hebben gestuurd naar <b id="lg-to"></b>.</p>
+        <div class="lg-code" id="lg-code">
+          <input inputmode="numeric" maxlength="1" aria-label="Cijfer 1" autocomplete="one-time-code"><input inputmode="numeric" maxlength="1" aria-label="Cijfer 2"><input inputmode="numeric" maxlength="1" aria-label="Cijfer 3"><input inputmode="numeric" maxlength="1" aria-label="Cijfer 4"><input inputmode="numeric" maxlength="1" aria-label="Cijfer 5"><input inputmode="numeric" maxlength="1" aria-label="Cijfer 6">
+        </div>
+        <p class="lg-err" id="lg-err2" hidden>Vul alle 6 cijfers in.</p>
+        <button class="lg-btn" type="submit">Inloggen</button>
+        <button type="button" class="lg-link" id="lg-resend">Geen code ontvangen? Stuur opnieuw</button>
+      </form>
+      <p class="lg-note" id="lg-note" hidden></p>
+      <a class="lg-foot" href="/">salarazimi.nl</a>
+    </div>
+  </div>
+</main>
+<script>
+(function(){
+  // KOPPELING: zet hier de adressen van jullie inlogsysteem (backend).
+  // Leeg = de pagina laat netjes weten dat inloggen nog niet beschikbaar is (er wordt dan niets verstuurd).
+  var AUTH={sendCode:'',verifyCode:'',redirect:'/'};
+  var f1=document.getElementById('lg-1'),f2=document.getElementById('lg-2'),mail=document.getElementById('lg-mail'),note=document.getElementById('lg-note'),sw=document.getElementById('lg-keep'),ins=[].slice.call(document.querySelectorAll('#lg-code input'));
+  function msg(t){note.textContent=t;note.hidden=!t}
+  sw.onclick=function(){var on=!sw.classList.contains('on');sw.classList.toggle('on',on);sw.setAttribute('aria-checked',on)};
+  function post(u,d){return fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify(d)}).then(function(r){if(!r.ok)throw r;return r.json().catch(function(){return{}})})}
+  function busy(f,b){var x=f.querySelector('.lg-btn');x.disabled=b;x.classList.toggle('busy',b)}
+  function send(){var e=mail.value.trim();
+    if(!AUTH.sendCode){msg('Inloggen is binnenkort beschikbaar. Vragen? Mail naar otto@infoscale.io.');return}
+    busy(f1,true);msg('');
+    post(AUTH.sendCode,{email:e,remember:sw.classList.contains('on')}).then(function(){document.getElementById('lg-to').textContent=e;f1.hidden=true;f2.hidden=false;ins[0].focus()})
+      .catch(function(){msg('Er ging iets mis. Probeer het zo nog eens.')}).then(function(){busy(f1,false)})}
+  f1.addEventListener('submit',function(ev){ev.preventDefault();var ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim());mail.classList.toggle('bad',!ok);document.getElementById('lg-err1').hidden=ok;if(ok)send()});
+  document.getElementById('lg-back').onclick=function(){f2.hidden=true;f1.hidden=false;msg('');mail.focus()};
+  document.getElementById('lg-resend').onclick=function(){send();msg('We hebben een nieuwe code gestuurd.')};
+  ins.forEach(function(i,k){
+    i.addEventListener('input',function(){i.value=i.value.replace(/\D/g,'').slice(-1);if(i.value&&ins[k+1])ins[k+1].focus();if(ins.every(function(x){return x.value}))f2.requestSubmit()});
+    i.addEventListener('keydown',function(e){if(e.key==='Backspace'&&!i.value&&ins[k-1])ins[k-1].focus()});
+    i.addEventListener('paste',function(e){var t=(e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'').slice(0,6);if(!t)return;e.preventDefault();t.split('').forEach(function(c,j){if(ins[j])ins[j].value=c});(ins[t.length]||ins[5]).focus();if(t.length===6)f2.requestSubmit()})});
+  f2.addEventListener('submit',function(ev){ev.preventDefault();var c=ins.map(function(x){return x.value}).join(''),ok=c.length===6;document.getElementById('lg-err2').hidden=ok;if(!ok)return;
+    busy(f2,true);post(AUTH.verifyCode,{email:mail.value.trim(),code:c,remember:sw.classList.contains('on')}).then(function(r){location.href=(r&&r.redirect)||AUTH.redirect})
+      .catch(function(){msg('Deze code klopt niet of is verlopen.');ins.forEach(function(x){x.value=''});ins[0].focus()}).then(function(){busy(f2,false)})});
+})();
+</script>
+</body>
+</html>

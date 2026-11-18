@@ -46,6 +46,11 @@
       "source": "/azimi-mastermind",
       "destination": "/transformatie-mastermind",
       "permanent": true
+    },
+    {
+      "source": "/strategische-mastermind",
+      "destination": "/transformatie-mastermind",
+      "permanent": true
     }
   ]
 }
