@@ -1,0 +1,30 @@
+<!-- 1. Vervang in elke pagina het bestaande <div class="incpop" id="incpop" hidden> ... </div> blok door dit: -->
+<div class="incpop" id="incpop" hidden>
+  <div class="incpop-box" role="dialog" aria-modal="true" aria-labelledby="incpop-t">
+    <button class="incpop-x" type="button" aria-label="Sluiten">×</button>
+    <div class="incpop-img"><img src="/pop-transformatie.jpg" alt="Salar Azimi en Rabi Adli" loading="lazy"><span class="incpop-tag"><i></i>Live event · 28 november</span></div>
+    <div class="incpop-body">
+      <span class="incpop-date">28 november 2026 · Hotel De Elderschans</span>
+      <h2 id="incpop-t">Transformatie Mastermind.</h2>
+      <p>Eén avond met Salar Azimi, Rabi Adli en Otto Rothfusz. Meer winst, meer overhouden, een AI-medewerker binnen 30 dagen. Jouw vraag aan tafel, beperkt aantal plekken.</p>
+      <div class="incpop-btns">
+        <a class="incpop-main" href="/transformatie-mastermind">Bekijk het event <span>→</span></a>
+        <a class="incpop-dm" id="incpop-dm" href="https://calendly.com/alexander-salarazimi/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
+      </div>
+      <span class="incpop-price">Aardenburg · vanaf 15:00 uur</span>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Vervang in het <script> eronder het blok dat begint met "// Pop-up aankomende incentive" door dit: -->
+// Pop-up aankomende incentive na 30 seconden, één keer per bezoek
+  (function(){
+    var P=document.getElementById('incpop');if(!P||/transformatie-mastermind|events/.test(location.pathname))return;
+    var seen=false;try{seen=sessionStorage.getItem('incpop2')==='1'}catch(e){}
+    if(seen)return;
+    function show(){if(document.querySelector('.modal:not([hidden]),.px-ep:not([hidden]),.mnav.open'))return setTimeout(show,5000);P.hidden=false;requestAnimationFrame(function(){P.classList.add('on')});try{sessionStorage.setItem('incpop2','1')}catch(e){}}
+    function hide(){P.classList.remove('on');setTimeout(function(){P.hidden=true},250)}
+    setTimeout(show,30000);
+    P.addEventListener('click',function(e){if(e.target===P||e.target.closest('.incpop-x'))hide()});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!P.hidden)hide()});
+  })();
