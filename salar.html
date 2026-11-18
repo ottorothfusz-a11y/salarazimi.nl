@@ -191,7 +191,22 @@
   // Eerstvolgende live event, automatisch. Pas deze lijst aan bij nieuwe edities.
   var L=[
     {n:'Transformatie Mastermind',w:'28 nov · Hotel De Elderschans',d:'2026-11-28',h:'transformatie-mastermind/'},
-    {n:'Marrakech Incentive',w:'21–25 jan · Marrakech',d:'2027-01-21',h:'events/#marrakech2'}
+    {n:'Marrakech Incentive',w:'21–25 jan · Marrakech',d:'2027-01-21',h:'events/#marrakech2'},
+    {n:'Transformatie Mastermind',w:'30 jan · Hotel De Elderschans',d:'2027-01-30',h:'transformatie-mastermind/'},
+    {n:'Transformatie Mastermind',w:'27 feb · Hotel De Elderschans',d:'2027-02-27',h:'transformatie-mastermind/'},
+    {n:'Tunesië Incentive',w:'11–15 mrt · Hammamet',d:'2027-03-11',h:'events/#tunesie'},
+    {n:'Transformatie Mastermind',w:'27 mrt · Hotel De Elderschans',d:'2027-03-27',h:'transformatie-mastermind/'},
+    {n:'Lamborghini Experience Bologna',w:'15/16 apr · Bologna',d:'2027-04-15',h:'events/#bologna'},
+    {n:'Transformatie Mastermind',w:'24 apr · Hotel De Elderschans',d:'2027-04-24',h:'transformatie-mastermind/'},
+    {n:'Istanbul Incentive',w:'13–17 mei · Istanbul',d:'2027-05-13',h:'events/#istanbul2'},
+    {n:'Transformatie Mastermind',w:'29 mei · Hotel De Elderschans',d:'2027-05-29',h:'transformatie-mastermind/'},
+    {n:'Transformatie Mastermind',w:'26 jun · Hotel De Elderschans',d:'2027-06-26',h:'transformatie-mastermind/'},
+    {n:'Côte d’Azur Incentive',w:'15–19 jul · Monaco',d:'2027-07-15',h:'events/#cotedazur'},
+    {n:'Transformatie Mastermind',w:'31 jul · Hotel De Elderschans',d:'2027-07-31',h:'transformatie-mastermind/'},
+    {n:'Transformatie Mastermind',w:'28 aug · Hotel De Elderschans',d:'2027-08-28',h:'transformatie-mastermind/'},
+    {n:'Transformatie Mastermind',w:'25 sep · Hotel De Elderschans',d:'2027-09-25',h:'transformatie-mastermind/'},
+    {n:'Transformatie Mastermind',w:'30 okt · Hotel De Elderschans',d:'2027-10-30',h:'transformatie-mastermind/'},
+    {n:'Transformatie Mastermind',w:'27 nov · Hotel De Elderschans',d:'2027-11-27',h:'transformatie-mastermind/'}
   ];
   var b=document.getElementById('livebar'),now=new Date(),e=L.filter(function(x){return new Date(x.d+'T23:59:59')>=now})[0];
   if(!b||!e)return;
@@ -216,7 +231,7 @@
   var K=344.490488147505,TX=1000,TY=500,R=Math.PI/180;
   function fw(lon,lat){var l=(lon-10)*R,p=lat*R,p2=p*p,p4=p2*p2;return [TX+K*l*(0.8707-0.131979*p2+p4*(-0.013791+p4*(0.003971*p2-0.001529*p4))),TY-K*p*(1.007226+p2*(0.015085+p4*(-0.044475+0.028874*p2-0.005916*p4)))]}
   // Bestemmingen op de minimap. Pas aan bij nieuwe edities (zelfde als de wereldkaart).
-  var P=[{n:'Marrakech',lon:-7.98,lat:31.63,d:'2026-11-16',hot:1},{n:'Istanbul',lon:28.98,lat:41.01,d:'2026-11-23'},{n:'Noorwegen',lon:9.65,lat:60.39,d:'2026-12-14'},{n:'Marrakech',lon:-7.98,lat:31.63,d:'2027-01-25'}];
+  var P=[{n:'Istanbul',lon:28.98,lat:41.01,d:'2026-11-23'},{n:'Noorwegen',lon:9.65,lat:60.39,d:'2026-12-14'},{n:'Marrakech',lon:-7.98,lat:31.63,d:'2027-01-25',hot:1},{n:'Hammamet',lon:10.62,lat:36.4,d:'2027-03-15'},{n:'Bologna',lon:11.34,lat:44.49,d:'2027-04-16'},{n:'Istanbul',lon:28.98,lat:41.01,d:'2027-05-17'},{n:'Monaco',lon:7.42,lat:43.74,d:'2027-07-19'}];
   var now=new Date(),seen={},live=P.filter(function(x){if(new Date(x.d+'T23:59:59')<now||seen[x.n])return false;return seen[x.n]=1});
   var hq=fw(3.5,51.3);
   function draw(){var mob=matchMedia('(max-width:999px)').matches,W=mob?380:540,c=mob?fw(5,44):fw(11,43),x0=c[0]-W/2,y0=c[1]-W/2;
@@ -238,7 +253,7 @@
       <p>Eén avond met Salar Azimi, Rabi Adli en Otto Rothfusz. Meer winst, meer overhouden, een AI-medewerker binnen 30 dagen. Jouw vraag aan tafel, beperkt aantal plekken.</p>
       <div class="incpop-btns">
         <a class="incpop-main" href="/transformatie-mastermind">Bekijk het event <span>→</span></a>
-        <a class="incpop-dm" id="incpop-dm" href="https://calendly.com/alexander-salarazimi/15min" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
+        <a class="incpop-dm" id="incpop-dm" href="https://calendly.com/alexander-salarazimi/selectie-gesprek-transformatie-mastermind" target="_blank" rel="noopener noreferrer"><span>Plan een gesprek</span></a>
       </div>
       <span class="incpop-price">Aardenburg · vanaf 15:00 uur</span>
     </div>
