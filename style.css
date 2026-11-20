@@ -3604,3 +3604,59 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:manual;-webkit-hyphens:m
 .am-dates-note{margin-top:22px;font-size:14px;color:rgba(255,255,255,.5)}
 @media(max-width:1000px){.am-dates{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.am-agenda{padding:64px 0}.am-dates{grid-template-columns:repeat(2,1fr);gap:10px}.am-dates li{padding:18px 16px 16px}.am-dates li b{font-size:34px}}
+
+/* Transformatie Mastermind · prijzen + reservering */
+.nw-price{display:flex;align-items:baseline;gap:8px;margin:-4px 0 14px}
+.nw-price b{font-size:30px;font-weight:800;letter-spacing:-1px;color:#f3dfaa}
+.nw-price span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.am-call{display:inline-block;margin-top:22px;font-size:14px;font-weight:600;color:#d9ba79;text-decoration:none;border-bottom:1px solid rgba(217,186,121,.4);padding-bottom:3px}
+.am-call:hover{border-color:#d9ba79}
+.am-bk{background:#0f0e0c;border:1px solid rgba(217,186,121,.28);border-radius:22px;padding:30px 28px 28px;color:#fff}
+.am-steps2{list-style:none;margin:0 0 26px;padding:0;display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:600}
+.am-steps2 li{display:flex;align-items:center;gap:10px}
+.am-steps2 li:first-child:after{content:'';display:block;width:90px;height:1px;background:rgba(217,186,121,.3);margin-left:4px}
+.am-steps2 i{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid rgba(217,186,121,.5);font-style:normal;font-size:12px;color:#d9ba79}
+.am-steps2 li.on{color:#fff}.am-steps2 li.on i,.am-steps2 li.done i{background:#d9ba79;color:#0b0a08;border-color:#d9ba79}
+.am-bk h3{font-size:26px;font-weight:800;letter-spacing:-.5px;margin:0 0 16px;color:#fff}
+.am-bk h3 small{display:block;font-size:14px;font-weight:400;color:rgba(255,255,255,.55);margin-top:4px;letter-spacing:0}
+.am-bk h3+ .am-f,.am-f2+h3,.am-f+h3{margin-top:0}
+.am-f2+h3{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08)}
+.am-f{margin-bottom:16px}
+.am-f label{display:block;font-size:14px;font-weight:600;color:#fff;margin-bottom:8px}
+.am-f label i{font-style:normal;color:#d9ba79}
+.am-f input,.am-f textarea{width:100%;background:#15130f;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;font:400 15px var(--font,inherit);padding:14px 16px;outline:0;transition:border-color .2s}
+.am-f textarea{resize:vertical;min-height:70px}
+.am-f input:focus,.am-f textarea:focus{border-color:#d9ba79}
+.am-f input.bad{border-color:#e0555f}
+.am-f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.am-tks{margin:22px 0 0;display:block}
+.am-tks>label{display:block;font-size:14px;font-weight:600;margin-bottom:10px}
+.am-tk{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:#15130f;margin-bottom:10px;cursor:pointer;transition:border-color .2s,background .2s}
+.am-tk.on{border-color:#d9ba79;background:#1a1711}
+.am-tk input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.5);margin:0;flex:none;position:relative}
+.am-tk input:checked{border-color:#d9ba79}.am-tk input:checked:after{content:'';position:absolute;inset:4px;border-radius:50%;background:#d9ba79}
+.am-tk-n{flex:1;display:flex;flex-direction:column;gap:2px}
+.am-tk-n b{font-size:14px;letter-spacing:2.5px;text-transform:uppercase;font-weight:800}
+.am-tk-n small{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#d9ba79}
+.am-tk-p{font-size:20px;font-weight:800;letter-spacing:-.5px}
+.am-total{display:grid;grid-template-columns:1fr auto;align-items:end;gap:4px 16px;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1)}
+.am-total span{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);grid-column:1/-1}
+.am-total em{font-style:normal;font-size:15px;color:rgba(255,255,255,.8)}
+.am-total b{font-size:34px;font-weight:800;letter-spacing:-1.5px;color:#fff}
+.am-small{font-size:12px;color:rgba(255,255,255,.45);margin:12px 0 0;line-height:1.5}
+.am-bk .f-err{color:#e0555f;font-size:13px;margin:10px 0 0}
+.am-bk-btn{width:100%;justify-content:center;margin-top:18px;padding:18px 22px;font-size:16px}
+.am-bk-btn:disabled{opacity:.6;cursor:default}
+.am-bk-ok p{color:rgba(255,255,255,.75);line-height:1.6;margin:0 0 14px}
+.am-bk-ok .btn-gold{margin-top:8px}
+.mx-st-pk{display:inline-block;margin-left:12px;padding-left:12px;border-left:1px solid rgba(255,255,255,.2);font-weight:700;color:#f3dfaa}
+@media(max-width:700px){.am-bk{padding:22px 18px}.am-f2{grid-template-columns:1fr}.am-steps2 li:first-child:after{width:40px}.am-total b{font-size:28px}.mx-st-pk{display:none}}
+#fn-modal .nw-apply-r{background:transparent;padding:0;color:#fff;border-radius:0}
+.am-bk,.am-bk *{box-sizing:border-box}
+.am-bk .f-row{display:block}
+.am-bk .f-row label,.am-tks>label{font-size:14px;color:#fff;font-weight:600}
+.am-bk-ok p b{font:inherit;font-weight:700;color:#f3dfaa;display:inline}
+.am-bk-ok h3 span{color:#d9ba79}
+.am-bk .am-tk{display:flex;flex-direction:row;align-items:center}
+.am-bk .am-tk input{width:20px;height:20px;padding:0;border-radius:50%;background:transparent;font-size:0}
+.am-bk .am-tk input:checked{background:transparent}
