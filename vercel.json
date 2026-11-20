@@ -48,9 +48,9 @@
       "permanent": true
     },
     {
-      "source": "/strategische-mastermind",
+      "source": "/azimi-netwerk-event",
       "destination": "/transformatie-mastermind",
-      "permanent": true
+      "permanent": false
     }
   ]
 }

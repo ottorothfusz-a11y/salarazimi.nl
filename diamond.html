@@ -17,7 +17,7 @@
     <a class="nav-hot" href="/transformatie-mastermind">Transformatie<span> Mastermind</span><i>28/11</i></a>
     <div class="dd"><a class="on" href="/events">Oplossingen<span class="chev">⌄</span></a>
       <div class="menu">
-        <div><h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/vastgoed">Vastgoed Masterclass</a></div>
+        <div><h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/strategische-mastermind">Strategy Mastermind Marrakech</a><a href="/vastgoed">Vastgoed Masterclass</a></div>
         <div><h5>Coaching</h5><a href="/groeiscan">Gratis groeiscan</a><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a></div>
       </div></div>
     <a href="/azimi-marketing">Azimi Marketing</a>
@@ -39,7 +39,7 @@
   <button class="close" id="mclose" aria-label="Menu sluiten">×</button>
   <a href="/">Home</a>
   <a class="m-hot" href="/transformatie-mastermind">Transformatie Mastermind · 28/11</a>
-  <h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/azimi-netwerk-event">Azimi Network Event</a><a href="/vastgoed">Vastgoed Masterclass</a>
+  <h5>Events</h5><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/events">Alle events &amp; incentives</a><a href="/wereldkaart">Wereldkaart</a><a href="/transformatie-mastermind">Transformatie Mastermind</a><a href="/strategische-mastermind">Strategy Mastermind Marrakech</a><a href="/vastgoed">Vastgoed Masterclass</a>
   <h5>Coaching</h5><a href="/groeiscan">Gratis groeiscan</a><a href="/inner-circle">Inner Circle Coaching</a><a href="/diamond">Diamond Coaching</a><a href="/1-op-1">Coaching gesprek</a>
   <h5>Meer</h5><a href="/portfolio">Portfolio</a><a href="/azimi-marketing">Azimi Marketing</a><a href="/podcasts">Media</a><a href="/over-ons">Over ons</a><a href="/careers">Careers</a><a href="/boeken">Boek</a>
   <a href="/contact" style="color:#d2b36b;border:0;margin-top:10px">Kom in contact →</a>
@@ -161,7 +161,7 @@
       <span class="lbl brown">Lidmaatschap aanvragen</span>
       <h2 id="dmm-title">Diamond Club</h2>
       <div class="bm-product"><span id="dmm-sub">Jaarlidmaatschap · persoonlijk contact, investeren, netwerk</span><b id="dmm-price">€20.000</b></div>
-      <p class="cal-intro">Kies direct een moment voor een kort gesprek. De paar vragen beantwoord je meteen in de agenda.</p><div class="cal-wrap"><div class="cal-embed" data-cal="https://calendly.com/alexander-salarazimi/15min" data-theme="light" data-thanks="/gesprek-bevestigd"></div></div>
+      <p class="cal-intro">Kies direct een moment voor een kort gesprek. De paar vragen beantwoord je meteen in de agenda.</p><div class="cal-wrap"><div class="cal-embed" data-cal="https://calendly.com/alexander-salarazimi/20min" data-theme="light" data-thanks="/gesprek-bevestigd"></div></div>
     </div>
     <div class="bm-done" hidden>
       <span class="lbl brown">Ontvangen</span>
@@ -275,7 +275,7 @@
   var K=344.490488147505,TX=1000,TY=500,R=Math.PI/180;
   function fw(lon,lat){var l=(lon-10)*R,p=lat*R,p2=p*p,p4=p2*p2;return [TX+K*l*(0.8707-0.131979*p2+p4*(-0.013791+p4*(0.003971*p2-0.001529*p4))),TY-K*p*(1.007226+p2*(0.015085+p4*(-0.044475+0.028874*p2-0.005916*p4)))]}
   // Bestemmingen op de minimap. Pas aan bij nieuwe edities (zelfde als de wereldkaart).
-  var P=[{n:'Istanbul',lon:28.98,lat:41.01,d:'2026-11-23'},{n:'Noorwegen',lon:9.65,lat:60.39,d:'2026-12-14'},{n:'Marrakech',lon:-7.98,lat:31.63,d:'2027-01-25',hot:1},{n:'Hammamet',lon:10.62,lat:36.4,d:'2027-03-15'},{n:'Bologna',lon:11.34,lat:44.49,d:'2027-04-16'},{n:'Istanbul',lon:28.98,lat:41.01,d:'2027-05-17'},{n:'Monaco',lon:7.42,lat:43.74,d:'2027-07-19'}];
+  var P=[{n:'Noorwegen',lon:9.65,lat:60.39,d:'2026-12-14'},{n:'Marrakech',lon:-7.98,lat:31.63,d:'2027-01-25',hot:1},{n:'Hammamet',lon:10.62,lat:36.4,d:'2027-03-15'},{n:'Bologna',lon:11.34,lat:44.49,d:'2027-04-16'},{n:'Istanbul',lon:28.98,lat:41.01,d:'2027-05-17'},{n:'Monaco',lon:7.42,lat:43.74,d:'2027-07-19'}];
   var now=new Date(),seen={},live=P.filter(function(x){if(new Date(x.d+'T23:59:59')<now||seen[x.n])return false;return seen[x.n]=1});
   var hq=fw(3.5,51.3);
   function draw(){var mob=matchMedia('(max-width:999px)').matches,W=mob?380:540,c=mob?fw(5,44):fw(11,43),x0=c[0]-W/2,y0=c[1]-W/2;
