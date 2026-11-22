@@ -3660,3 +3660,7 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:manual;-webkit-hyphens:m
 .am-bk .am-tk{display:flex;flex-direction:row;align-items:center}
 .am-bk .am-tk input{width:20px;height:20px;padding:0;border-radius:50%;background:transparent;font-size:0}
 .am-bk .am-tk input:checked{background:transparent}
+@media(max-width:600px){.mx-sticky{overflow:hidden}.mx-sticky .mx-st-t{min-width:0;flex:1 1 auto;overflow:hidden}.mx-sticky .mx-st-t b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}.mx-sticky .mx-st-t em{display:none}.mx-sticky>a{flex:none}}
+.am-bk .am-bk-btn{width:100%;max-width:100%;min-width:0;box-sizing:border-box;white-space:normal;text-align:center}
+@media(max-width:600px){.am-bk .am-bk-btn{padding:16px 14px;font-size:15px}.am-steps2{gap:8px;font-size:11px;letter-spacing:1.5px}.am-steps2 li:first-child:after{width:24px}}
+.am-bk .am-bk-btn{height:auto;line-height:1.2;letter-spacing:1px}
