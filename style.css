@@ -3689,3 +3689,10 @@ h1,h2,h3{overflow-wrap:normal;word-break:normal;hyphens:manual;-webkit-hyphens:m
 .al-pod-yt:hover{border-color:#d9ba79;background:rgba(217,186,121,.08)}
 .al-pod-yt svg{width:1.3rem;height:1.3rem;fill:#ff0033}
 @media(max-width:900px){.al-pod{padding-block:5.5rem}.al-pod-head{grid-template-columns:1fr;gap:1.4rem;margin-bottom:2rem}.al-pod-player{border-radius:1.1rem}.al-pod-play{width:5.4rem;height:5.4rem}.al-pod-play svg{width:2rem;height:2rem}.al-pod-tag{left:1rem;bottom:1rem;font-size:.68rem}}
+.al-pod{padding-block:6.5rem}
+.al-pod .al-h{font-size:3.6rem}
+.al-pod-player{max-width:78rem;margin:0 auto;border-radius:1.3rem}
+.al-pod-head{margin-bottom:2.4rem}
+.al-pod-foot{max-width:78rem;margin-left:auto;margin-right:auto}
+.al-pod-play{width:5.8rem;height:5.8rem}
+@media(max-width:900px){.al-pod{padding-block:4.5rem}.al-pod .al-h{font-size:2.4rem}.al-pod-play{width:4.6rem;height:4.6rem}}
