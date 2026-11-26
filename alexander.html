@@ -80,6 +80,27 @@
   </div>
 </section>
 
+<section class="al-pod" id="podcast">
+  <div class="al-in">
+    <div class="al-pod-head">
+      <div>
+        <span class="al-eyebrow rv">Podcast · nieuw</span>
+        <h2 class="al-h rv">“Ik zit achter<br><em>Salar Azimi.</em>”</h2>
+      </div>
+      <p class="al-pod-lead rv">Een openhartig gesprek met Alexander over hoe hij samen met Salar de community en het bureau runt, wat hij leerde op de restaurantvloer en waarom groei net zo vaak in het hoofd vastloopt als in de cijfers.</p>
+    </div>
+    <div class="al-pod-player rv" id="al-pod" data-yt="HXu3j9FRodk">
+      <img src="/alx-podcast.jpg" alt="Ik zit achter Salar Azimi – podcast met Alexander Taselaar" loading="lazy">
+      <button type="button" class="al-pod-play" aria-label="Speel de podcast af"><span class="al-pod-ring"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+      <span class="al-pod-tag">▶ Bekijk de aflevering</span>
+    </div>
+    <div class="al-pod-foot rv">
+      <a class="al-pod-yt" href="https://youtu.be/HXu3j9FRodk" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.2zM9.8 15.1V8.9l6 3.1z"/></svg>Open op YouTube</a>
+      <span>Liever luisteren? De aflevering staat ook op YouTube, zet 'm aan in de auto.</span>
+    </div>
+  </div>
+</section>
+
 <section class="al-story">
   <div class="al-in al-story-grid">
     <div class="al-story-txt">
@@ -399,6 +420,9 @@
   b.addEventListener('click',function(e){var x=e.target.closest('[data-c]');if(!x)return;try{localStorage.setItem('az-consent',x.dataset.c)}catch(err){}if(x.dataset.c==='ja')load();b.remove()});
   (document.body?Promise.resolve():new Promise(function(r){addEventListener('DOMContentLoaded',r)})).then(function(){document.body.appendChild(b)});
 })();
+</script>
+<script>
+(function(){var p=document.getElementById('al-pod');if(!p)return;p.addEventListener('click',function(){if(p.classList.contains('on'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+p.dataset.yt+'?autoplay=1&rel=0&modestbranding=1';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.allowFullscreen=true;f.title='Ik zit achter Salar Azimi';p.appendChild(f);p.classList.add('on')});})();
 </script>
 </body>
 </html>
